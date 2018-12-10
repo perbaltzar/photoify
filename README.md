@@ -1,4 +1,5 @@
 # Photoify
+[<img src="https://media.giphy.com/media/ZPG07vJFcpXTG/giphy.gif" width="100%">](https://media.giphy.com/media/ZPG07vJFcpXTG/giphy.gif)
 The making of a Instagram clone in PHP, HTML, Javascript and CSS
 
 # Installing
