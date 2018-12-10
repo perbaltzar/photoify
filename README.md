@@ -9,6 +9,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 # TO DO
 Database
 Tables
+Folder structure
 As a user I should be able to create an account.
 As a user I should be able to login.
 As a user I should be able to logout.
@@ -19,10 +20,12 @@ As a user I should be able to edit my posts.
 As a user I should be able to delete my posts.
 As a user I should be able to like and dislike posts.
 
+# DOING
+
+# DONE
+
 # Creator
 [Per Baltzar](https://github.com/perbaltzar)
 
 # Testers
 No one yet
-
-
