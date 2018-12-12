@@ -21,16 +21,7 @@ if (isset($_POST['email'], $_POST['password'])){
 
     //verifying password
     if (password_verify($_POST['password'], $user['password'])){
-      $_SESSION['user'] = [
-        'id' => $user['id'],
-        'first_name' => $user['first_name'],
-        'last_name' => $user['last_name'],
-        'email' => $user['email'],
-        'description' => $user['description'],
-        'profile_picture' => $user['profile_picture'],
-        'username' => $user['username'],
-        'created_at' => $user['created_at']
-      ];
+      $_SESSION['user'] = $user;
       redirect('/');
     }else{
       $_SESSION['error'] = 'Wrong Password';

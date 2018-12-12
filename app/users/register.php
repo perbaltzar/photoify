@@ -49,16 +49,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     // Storing userinfo in SESSION-variable
-    $_SESSION['user'] = [
-        'id' => $user['id'],
-        'first_name' => $user['first_name'],
-        'last_name' => $user['last_name'],
-        'email' => $user['email'],
-        'description' => $user['description'],
-        'profile_picture' => $user['profile_picture'],
-        'username' => $user['username'],
-        'created_at' => $user['created_at']
-      ];
+    $_SESSION['user'] = $user;
     redirect('/');
   }else{
     //PASSWORDS DOESN'T MATCH
