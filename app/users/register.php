@@ -9,6 +9,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
   // Checking if password and confirm password are the same
   if ($_POST['password'] === $_POST['confirmPassword']){
 
+    // Collection data from input fields
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $firstName = filter_var(trim($_POST['firstName']), FILTER_SANITIZE_STRING);
     $lastName = filter_var(trim($_POST['lastName']), FILTER_SANITIZE_STRING);
@@ -16,24 +17,53 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $created_at = date("Y-m-d");
 
+    // Checking database to see if email already excist
+    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email;');
+    $statement->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($user){
+      $_SESSION['error'] = 'Email already excist';
+      redirect('/register.php');
+    }
 
     // Connect to database
-      $statement = $pdo->prepare(
-        'INSERT INTO users(email, first_name, last_name, username, password, created_at)
-        VALUES(:email, :first_name, :last_name, :username, :password, :created_at)');
+    $statement = $pdo->prepare(
+      'INSERT INTO users(email, first_name, last_name, username, password, created_at)
+      VALUES(:email, :first_name, :last_name, :username, :password, :created_at);'
+    );
 
-      //BINDING THE VARIABLES
-      $statement->bindParam(':email', $email, PDO::PARAM_STR);
-      $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
-      $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
-      $statement->bindParam(':username', $username, PDO::PARAM_STR);
-      $statement->bindParam(':password', $password, PDO::PARAM_STR);
-      $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
-      $statement->execute();
-      // $userInfo = $statement->fetch(PDO::FETCH_ASSOC);
+    // Binding the variables and executing
+    $statement->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
+    $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
+    $statement->bindParam(':username', $username, PDO::PARAM_STR);
+    $statement->bindParam(':password', $password, PDO::PARAM_STR);
+    $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
+    $statement->execute();
 
+    // Collecting the data from database to keep new user logged in.
+    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email;');
+    $statement->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    
+    // Storing userinfo in SESSION-variable
+    $_SESSION['user'] = [
+        'id' => $user['id'],
+        'first_name' => $user['first_name'],
+        'last_namme' => $user['last_name'],
+        'email' => $user['email'],
+        'description' => $user['description'],
+        'img_url' => $user['profile_picture'],
+        'username' => $user['username'],
+        'created_at' => $user['created_at']
+      ];
+    redirect('/');
   }else{
-  //PASSWORDS DOESN'T MATCH
+    //PASSWORDS DOESN'T MATCH
+    // die(var_dump('hej'));
+    $_SESSION['error'] = 'Passwords don\'t match';
   }
-  redirect('/');
+  redirect('/register.php');
 }

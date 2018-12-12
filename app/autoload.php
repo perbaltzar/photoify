@@ -19,5 +19,3 @@ $config = require __DIR__.'/config.php';
 // die(var_dump($config));
 // Setup the database connection.
 $pdo = new PDO($config['database_path']);
-
-// die(var_dump($pdo));
