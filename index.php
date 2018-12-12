@@ -19,7 +19,8 @@ require __DIR__.'/views/header.php';
     <a href="login.php">Login</a>
     <a href="register.php">Register</a>
     <a href="post.php">Post</a>
-    <a href="views/feed.php">Flöde</a>
+    <a href="views/feed.php">Feed</a>
+    <a href="home-profile.php">Your Profile</a>
     <a href="/app/users/logout.php">Logout</a>
 
 

@@ -47,15 +47,15 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
-    
+
     // Storing userinfo in SESSION-variable
     $_SESSION['user'] = [
         'id' => $user['id'],
         'first_name' => $user['first_name'],
-        'last_namme' => $user['last_name'],
+        'last_name' => $user['last_name'],
         'email' => $user['email'],
         'description' => $user['description'],
-        'img_url' => $user['profile_picture'],
+        'profile_picture' => $user['profile_picture'],
         'username' => $user['username'],
         'created_at' => $user['created_at']
       ];
