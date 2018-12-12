@@ -19,6 +19,8 @@ require __DIR__.'/views/header.php';
     <?php endif;?>
     <a href="login.php">Login</a>
     <a href="register.php">Register</a>
+    <a href="post.php">Post</a>
+    <a href="home.php">Flöde</a>
     <a href="/app/users/logout.php">Logout</a>
 
 
