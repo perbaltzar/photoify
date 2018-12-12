@@ -44,7 +44,7 @@ if (isset($_POST['description'], $_FILES['content'])){
       // }
 
 
-
+      redirect('/post.php');
 
     }else{
       echo 'The uploaded file exceeded the file size limit.';
