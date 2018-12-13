@@ -17,8 +17,13 @@ require __DIR__.'/views/header.php';
     Email: <?= $_SESSION['user']['email']; ?><br>
     Username: <?= $_SESSION['user']['username']; ?><br>
     Member since: <?= $_SESSION['user']['created_at']; ?><br>
-    Profile Picture: <?= $_SESSION['user']['profile_picture']; ?><br>
+    Profile Picture:
+      <img src="<?=$_SESSION['user']['profile_picture'];?>">
+    <br>
+
+
     Biography: <?= $_SESSION['user']['description']; ?><br>
-    <a href="/views/edit/edit-profile.php">Edit...</a>
+    <a href="/views/edit/edit-profile.php">Edit...</a><br>
+    <a href="/app/users/delete.php">Delete my user</a>
   </body>
 </html>
