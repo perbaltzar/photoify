@@ -18,12 +18,12 @@ require __DIR__.'/views/header.php';
     Username: <?= $_SESSION['user']['username']; ?><br>
     Member since: <?= $_SESSION['user']['created_at']; ?><br>
     Profile Picture:
-      <img src="<?=$_SESSION['user']['profile_picture'];?>">
+      <img src="<?=$_SESSION['user']['profile_picture'];?>"><a href="views/edit/picture.php">Upload new...</a>
     <br>
 
 
-    Biography: <?= $_SESSION['user']['description']; ?><br>
-    <a href="/views/edit/edit-profile.php">Edit...</a><br>
+    Biography: <?= $_SESSION['user']['description']; ?><br><a href="views/edit/biography.php">edit...</a>
+    <a href="/views/edit/info.php">Edit info...</a><br>
     <a href="/app/users/delete.php">Delete my user</a>
   </body>
 </html>

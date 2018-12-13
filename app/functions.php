@@ -28,3 +28,14 @@ function getDataByID(int $id, object $pdo): array
     $statement->execute();
     return $statement->fetch(PDO::FETCH_ASSOC);
   }
+  /**
+   * Create a string for path to directory
+   * @param  int    $id   User ID
+   * @param  string $name Name of folder
+   * @return string full path to directory
+   */
+function makeDirPath(int $id, string $name): string {
+  // return '/../uploads/'.$id.'/'.$name.'/';
+  $format = "%s/uploads/$id/$name/";
+  return sprintf($format, __DIR__);
+}

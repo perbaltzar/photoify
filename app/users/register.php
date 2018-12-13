@@ -31,7 +31,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     // Connect to database
     $statement = $pdo->prepare(
       'INSERT INTO users(email, first_name, last_name, username, password, created_at, profile_picture)
-      VALUES(:email, :first_name, :last_name, :username, :password, :created_at, :profile_picture);'
+      VALUES(:email, :first_name, :last_name, :username, :password, :created_at, :profile_picture)'
     );
 
     // Binding the variables and executing
@@ -41,7 +41,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->bindParam(':password', $password, PDO::PARAM_STR);
     $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
-    $statement->bindParam(':profil', $profile_picture, PDO::PARAM_STR);
+    $statement->bindParam(':profile_picture', $profile_picture, PDO::PARAM_STR);
     $statement->execute();
 
     // Collecting the data from database to keep new user logged in.
