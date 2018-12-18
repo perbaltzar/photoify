@@ -22,7 +22,7 @@ require __DIR__.'/views/header.php';
     <br>
 
 
-    Biography: <?= $_SESSION['user']['description']; ?><br><a href="views/edit/biography.php">edit...</a>
+    Biography: <?= $_SESSION['user']['biography']; ?><br><a href="views/edit/biography.php">edit...</a>
     <a href="/views/edit/info.php">Edit info...</a><br>
     <a href="/app/users/delete.php">Delete my user</a>
   </body>
