@@ -35,7 +35,5 @@ function getDataByID(int $id, object $pdo): array
    * @return string full path to directory
    */
 function makeDirPath(int $id, string $name): string {
-  // return '/../uploads/'.$id.'/'.$name.'/';
-  $format = "%s/uploads/$id/$name/";
-  return sprintf($format, __DIR__);
+  return "/../uploads/$id/$name/";
 }

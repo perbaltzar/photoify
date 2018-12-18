@@ -16,15 +16,16 @@ if (isset($_POST['description'], $_FILES['content'])){
 
       // Creating a directory for user in upload if ont excists
       $path = makeDirPath($id, 'posts');
-      if (!file_exists($path)) {
-        mkdir($path, 0777, true);
+      if (!file_exists(__DIR__.$path)) {
+        mkdir(__DIR__.$path, 0777, true);
       }
+      
       // Moving content to post folder
       $postName = $path.time().'-'.$post['name'];
       move_uploaded_file($post['tmp_name'], $postName);
 
       // Changing path for Database
-      $postPath = "app/uploads/$id/posts/".time().'-'.$post['name'];
+      $postPath = "/app/uploads/$id/posts/".time().'-'.$post['name'];
       $created_at = date("Y-m-d H:i:s");
 
       // Saving Information in Database
@@ -37,12 +38,6 @@ if (isset($_POST['description'], $_FILES['content'])){
       $statement->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
       $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
       $statement->execute();
-
-      // if (!$statement){
-        // die(var_dump($statement->errorInfo()));
-      // }
-
-
       redirect('/post.php');
 
     }else{
