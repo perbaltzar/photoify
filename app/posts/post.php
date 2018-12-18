@@ -19,13 +19,13 @@ if (isset($_POST['description'], $_FILES['content'])){
       if (!file_exists(__DIR__.$path)) {
         mkdir(__DIR__.$path, 0777, true);
       }
-      
+      // die(var_dump($path));
       // Moving content to post folder
-      $postName = $path.time().'-'.$post['name'];
-      move_uploaded_file($post['tmp_name'], $postName);
+      $postName = time().'-'.$post['name'];
+      move_uploaded_file($post['tmp_name'], __DIR__.$path.$postName);
 
       // Changing path for Database
-      $postPath = "/app/uploads/$id/posts/".time().'-'.$post['name'];
+      $postPath = "/app/uploads/$id/posts/".$postName;
       $created_at = date("Y-m-d H:i:s");
 
       // Saving Information in Database

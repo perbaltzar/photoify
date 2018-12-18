@@ -11,11 +11,11 @@ if (isset($_SESSION['user'], $_FILES['profile_picture']))
   $id = (int) $_SESSION['user']['id'];
 
   $path = makeDirPath($id, 'profile');
-  // die(var_dump($path));
+
   if (!file_exists(__DIR__.$path)){
     mkdir(__DIR__.$path);
   }
-// die(var_dump($id));
+
   $picture_name = time().'-'.$profile_picture['name'];
   move_uploaded_file($profile_picture['tmp_name'], __DIR__.$path.$picture_name);
 

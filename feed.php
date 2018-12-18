@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__.'/../app/autoload.php';
+require __DIR__.'/app/autoload.php';
 
 // Collecting data from Database
 $statement = $pdo->prepare(
