@@ -18,7 +18,7 @@ require __DIR__.'/views/header.php';
     Username: <?= $_SESSION['user']['username']; ?><br>
     Member since: <?= $_SESSION['user']['created_at']; ?><br>
     Profile Picture:
-      <img src="<?=$_SESSION['user']['profile_picture'];?>"><a href="views/edit/picture.php">Upload new...</a>
+      <img style="width: 100px; height: 100px;" src="<?=$_SESSION['user']['profile_picture'];?>"><a href="views/edit/picture.php">Upload new...</a>
     <br>
 
 
