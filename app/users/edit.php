@@ -43,5 +43,5 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],
     // Updating the Session Variable
     $_SESSION['user'] = getDataByID($id, $pdo);
   }
-  redirect('/../../home-profile.php');
+  redirect('/../../profile-home.php');
 }

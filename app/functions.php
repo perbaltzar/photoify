@@ -21,7 +21,7 @@ declare(strict_types=1);
   * @param  int   $id []
   * @return array     [Array of userdata]
   */
-function getDataByID(int $id, object $pdo): array
+function getUserByID(int $id, object $pdo): array
   {
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
     $statement->bindParam(':id', $id, PDO::PARAM_STR);

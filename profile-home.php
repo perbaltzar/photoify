@@ -12,6 +12,7 @@ require __DIR__.'/views/header.php';
     <title></title>
   </head>
   <body>
+    <center>
     <h1>This Is Your Profile</h1>
     Name: <?= $_SESSION['user']['first_name']." ".$_SESSION['user']['last_name'];?> <br>
     Email: <?= $_SESSION['user']['email']; ?><br>
@@ -22,8 +23,9 @@ require __DIR__.'/views/header.php';
     <br>
 
 
-    Biography: <?= $_SESSION['user']['biography']; ?><br><a href="views/edit/biography.php">edit...</a>
+    Biography: <?= $_SESSION['user']['biography']; ?><br><a href="views/edit/biography.php">edit...</a><br>
     <a href="/views/edit/info.php">Edit info...</a><br>
     <a href="/app/users/delete.php">Delete my user</a>
+  </center>
   </body>
 </html>

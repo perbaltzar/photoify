@@ -12,10 +12,18 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Mulitiple files
 * Which file types should be allowed
 * Lowercase check when logging in.
-* As a user I should be able to edit my posts.
 * As a user I should be able to like and dislike posts.
 * Scrolling through all/friends post.
+* Comments on other post
 * Sorting the posts.
+* Report
+* See other profiles
+* Have seen this post function
+* Search for themes. (#hashtag)
+* Error messages
+* Username to linked to
+* Change folder structure for picture, folder in assets or root folder and without
+  pathway, only file name. 
 
 # DOING
 * Folder structure
@@ -23,6 +31,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Tables
 
 # DONE
+* As a user I should be able to edit my posts.
 * As a user I should be able to delete my posts.
 * As a user I should be able to upload a profile avatar image.
 * As a user I should be able to edit my account email, password and biography.

@@ -20,7 +20,7 @@ require __DIR__.'/views/header.php';
     <a href="register.php">Register</a>
     <a href="post.php">Post</a>
     <a href="feed.php">Feed</a>
-    <a href="home-profile.php">Your Profile</a>
+    <a href="profile-home.php">Your Profile</a>
     <a href="/app/users/logout.php">Logout</a>
 
 
