@@ -22,8 +22,6 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Search for themes. (#hashtag)
 * Error messages
 * Username to linked to
-* Change folder structure for picture, folder in assets or root folder and without
-  pathway, only file name.
 
 # DOING
 * Folder structure
@@ -40,6 +38,8 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * As a user I should be able to create an account.
 * As a user I should be able to login.
 * As a user I should be able to logout.
+* Change folder structure for picture, folder in assets or root folder and without
+pathway, only file name.
 
 # Creator
 [Per Baltzar](https://github.com/perbaltzar)
