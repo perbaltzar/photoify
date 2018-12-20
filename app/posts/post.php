@@ -11,30 +11,20 @@ if (isset($_POST['description'], $_FILES['content'])){
   if ($post['type'] === 'image/jpeg'){
     if ($post['size'] < 3000000){
       $id = (int) $_SESSION['user']['id'];
-
-
-
-      // Creating a directory for user in upload if ont excists
-      $path = makeDirPath($id, 'posts');
-      if (!file_exists(__DIR__.$path)) {
-        mkdir(__DIR__.$path, 0777, true);
-      }
-      // die(var_dump($path));
-      // Moving content to post folder
-      $postName = time().'-'.$post['name'];
-      move_uploaded_file($post['tmp_name'], __DIR__.$path.$postName);
-
-      // Changing path for Database
-      $postPath = "/app/uploads/$id/posts/".$postName;
+      $path = '/../../assets/uploads/';
+      $post_name = time().'-'.$id.'-'.$post['name'];
       $created_at = date("Y-m-d H:i:s");
+
+      move_uploaded_file($post['tmp_name'], __DIR__.$path.$post_name);
+
 
       // Saving Information in Database
       $statement = $pdo->prepare(
         'INSERT INTO posts (user_id, content, description, created_at)
          VALUES (:user_id, :content, :description, :created_at);'
-       );
+      );
       $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
-      $statement->bindParam(':content', $postPath, PDO::PARAM_STR);
+      $statement->bindParam(':content', $post_name, PDO::PARAM_STR);
       $statement->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
       $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
       $statement->execute();

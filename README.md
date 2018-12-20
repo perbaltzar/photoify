@@ -23,7 +23,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Error messages
 * Username to linked to
 * Change folder structure for picture, folder in assets or root folder and without
-  pathway, only file name. 
+  pathway, only file name.
 
 # DOING
 * Folder structure
@@ -31,6 +31,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Tables
 
 # DONE
+* When changing email, check if email excists in database
 * As a user I should be able to edit my posts.
 * As a user I should be able to delete my posts.
 * As a user I should be able to upload a profile avatar image.

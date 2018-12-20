@@ -18,9 +18,12 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 //Looping through all the posts
 foreach ($posts as $post) : ?>
 
-    <!-- Skriv en funktion istället! -->
+    <!--
+        Skriv en funktion istället! IF CONDITION (IsOwner)
+        Samma sak med isset($_SESSION['user'])
+    !-->
   <?php if ($post['user_id'] !== $_SESSION['user']['id']): ?>
-    <img style="width: 150px; height: 150px;" src="<?=$post['content']?>">
+    <img style="width: 150px; height: 150px;" src="<?='/assets/uploads/'.$post['content']?>">
     <br>
     <p><?=$post['description'];?></p>
     <br>
@@ -35,7 +38,7 @@ foreach ($posts as $post) : ?>
     <br><br><br>
     <br>
   <?php else: ?>
-    <img style="width: 150px; height: 150px;" src="<?=$post['content']?>">
+    <img style="width: 150px; height: 150px;" src="<?='/assets/uploads/'.$post['content']?>">
     <br>
     <p><?=$post['description'];?></p>
     <!-- NEED TO SEND POST ID TO DELETE? ASK VINCENT IF GET IS SAFE ENOUGH
