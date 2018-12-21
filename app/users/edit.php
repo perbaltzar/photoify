@@ -7,7 +7,7 @@ require __DIR__.'/../autoload.php';
 
 // Checking if all POST are set and user is logged in
 if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],
-          $_POST['password'], $_POST['username'], $_SESSION['user']))
+          $_POST['password'], $_POST['username']) && is_logged_in())
   {
   // Putting POST into variable
   $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
@@ -19,7 +19,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],
   $id = (int) $_SESSION['user']['id'];
 
   // Fetch password from database
-  $user = getUserByID($id, $pdo);
+  $user = get_user_by_id($id, $pdo);
 
 
 
@@ -39,7 +39,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],
     $statement->execute();
     $check_for_email = $statement->fetch(PDO::FETCH_ASSOC);
     if ($check_for_email) {
-      $_SESSION['error'] = 'Email already excist in database';   
+      $_SESSION['error'] = 'Email already excist in database';
     }else{
       // Updating Database with new values
       $statement = $pdo->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email, username = :username, updated_at = :updated_at WHERE id = :id");

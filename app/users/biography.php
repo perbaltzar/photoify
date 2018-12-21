@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if (isset($_POST['biography'], $_SESSION['user'])){
+if (isset($_POST['biography']) && is_logged_in()){
   //Saving Post data in variables
   $biography = filter_var(trim($_POST['biography']), FILTER_SANITIZE_STRING);
   $id = (int) $_SESSION['user']['id'];

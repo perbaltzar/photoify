@@ -5,7 +5,7 @@ declare(strict_types=1);
 require __DIR__.'/../autoload.php';
 
 
-if (isset($_SESSION['user'])){
+if (is_logged_in()){
   $id = (int) $_SESSION['user']['id'];
   // die(var_dump($id));
   // Deleting the user, comments, follows, likes and posts from the database

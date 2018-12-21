@@ -3,7 +3,7 @@
 declare(strict_types=1);
 require __DIR__.'/../../views/header.php';
 
-if (isset($_POST['description'], $_FILES['content'])){
+if (isset($_FILES['content']) && is_logged_in()){
   $post = $_FILES['content'] ;
   // die(var_dump($post));
 

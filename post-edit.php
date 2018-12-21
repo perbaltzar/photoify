@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/app/autoload.php';
 
- if (isset($_SESSION['user'], $_GET['post_id'])){
+ if (isset($_GET['post_id']) && is_logged_in()){
    $user_id = (int)$_SESSION['user']['id'];
    $post_id = (int)$_GET['post_id'];
 
