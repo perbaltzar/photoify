@@ -15,7 +15,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     $lastName = filter_var(trim($_POST['lastName']), FILTER_SANITIZE_STRING);
     $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $profile_picture = 'assets/images/default-profile.jpg';
+    $profile_picture = 'default-profile.jpg';
     $created_at = date("Y-m-d");
 
     // Checking database to see if email already excist
