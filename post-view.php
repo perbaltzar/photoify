@@ -70,20 +70,25 @@ if (is_logged_in() && isset($_GET['post_id'])){
     // If post is not by current user
     // Putting out like and unlike
     else: ?>
-      <a href="app/posts/like.php?post_id=<?=$post['post_id'];?>">Like</a>
-      <a href="app/posts/unlike.php?post_id=<?=$post['post_id'];?>">Unlike</a>
+      <a href="app/posts/like.php?post_id=<?=$post['post_id'];?>&redirect=post-view.php">Like</a>
+      <a href="app/posts/unlike.php?post_id=<?=$post['post_id'];?>&redirect=post-view.php">Unlike</a>
       <br><br><br>
       <br>
     <?php endif; ?>
     <!-- PRINTING OUT COMMENTS -->
 
     <?php foreach ($comments as $comment): ?>
+      <img style="width: 30px; height: 30px;" src="<?='/assets/uploads/'.$comment['profile_picture']?>">
+      <?=$comment['username'];?>
+      <br>
       <?=$comment['content'];?>
+      <hr>
     <?php endforeach; ?>
     <!-- FORM FOR POSTING COMMENTS -->
+    <br><br>
     Comment:
-    <form action="app/posts/comment.php?post_id=<?=$post_id?>" method="post">
-      <textarea name="" rows="8" cols="80"></textarea>
+    <form action="app/posts/comment.php?post_id=<?=$post_id?>&redirect=post-view.php" method="post">
+      <textarea name="comment" rows="8" cols="80"></textarea>
       <button type="submit" name="button">Submit</button>
     </form>
 

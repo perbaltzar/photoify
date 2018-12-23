@@ -7,6 +7,7 @@ require __DIR__.'/../autoload.php';
 if (is_logged_in() && isset($_GET['post_id'])){
   $user_id = (int)$_SESSION['user']['id'];
   $post_id = (int) $_GET['post_id'];
+  $redirect = $_GET['redirect'];
 
 
   // Check if like allready excist in Database
@@ -15,4 +16,4 @@ if (is_logged_in() && isset($_GET['post_id'])){
   $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
   $statement->execute();
 }
-redirect('/feed.php');
+redirect("/$redirect?post_id=$post_id");
