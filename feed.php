@@ -10,18 +10,27 @@ $statement = $pdo->prepare(
   u.username, u.id as user_id, u.profile_picture
   FROM posts p INNER JOIN users u WHERE u.id = p.user_id"
  );
- if (!$statement){
-   die(var_dump($pdo->errorInfo()));
- }
+
 $statement->execute();
+// Saving database in variable
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-// die(var_dump($posts));
+
+// Counting the rows in likes table
+$statement = $pdo->prepare('SELECT COUNT(*) FROM likes');
+$statement->execute();
+$likes = $statement->fetchAll(PDO::FETCH_ASSOC);
+if (!$statement){
+  die(var_dump($pdo->errorInfo()));
+}
+// die(var_dump($likes));
+
 ?>
 
 <center>
 <?php
 //Looping through all the posts
-foreach ($posts as $post) : ?>
+foreach ($posts as $post) :
+  ?>
   <?php if (is_owner($post['user_id'], $_SESSION['user']['id'])):
     // If post is by current user
     ?>
@@ -49,9 +58,17 @@ foreach ($posts as $post) : ?>
     <br>
     <!-- Likebutton -->
     <?php
+    // Counting the rows in likes table
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM likes WHERE post_id = :post_id');
+    $id = $post['post_id'];
+    $statement->bindParam(':post_id', $id, PDO::PARAM_INT);
+    $statement->execute();
+    $likes = $statement->fetch(PDO::FETCH_ASSOC);
+    $likes = $likes["COUNT(*)"];
     ?>
-    <a href="app/posts/like.php?post_id=<?=$post['id'];?>">Like</a>
-    <a href="app/posts/like.php?post_id=<?=$post['id'];?>">Unlike</a>
+    Number of likes: <?=$likes?><br>
+    <a href="app/posts/like.php?post_id=<?=$post['post_id'];?>">Like</a>
+    <a href="app/posts/like.php?post_id=<?=$post['post_id'];?>">Unlike</a>
     <br><br><br>
     <br>
   <?php endif; ?>

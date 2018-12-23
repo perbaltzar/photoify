@@ -17,7 +17,6 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Comments on other post
 * Sorting the posts.
 * Report
-* See other profiles
 * Have seen this post function
 * Search for themes. (#hashtag)
 * Error messages
@@ -29,6 +28,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Tables
 
 # DONE
+* See other profiles
 * When changing email, check if email excists in database
 * As a user I should be able to edit my posts.
 * As a user I should be able to delete my posts.
