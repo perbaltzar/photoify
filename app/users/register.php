@@ -10,7 +10,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
   if ($_POST['password'] === $_POST['confirmPassword']){
 
     // Collection data from input fields
-    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $email = strtolower(filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL));
     $firstName = filter_var(trim($_POST['firstName']), FILTER_SANITIZE_STRING);
     $lastName = filter_var(trim($_POST['lastName']), FILTER_SANITIZE_STRING);
     $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);

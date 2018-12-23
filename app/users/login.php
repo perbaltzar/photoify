@@ -5,7 +5,7 @@ declare(strict_types=1);
 require __DIR__.'/../autoload.php';
 
 if (isset($_POST['email'], $_POST['password'])){
-    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $email = strtolower(filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL));
 
     //Collecting user from database
     $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');

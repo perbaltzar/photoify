@@ -11,8 +11,6 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Max size for file uploads
 * Mulitiple files
 * Which file types should be allowed
-* Lowercase check when logging in.
-* As a user I should be able to like and dislike posts.
 * Scrolling through all/friends post.
 * Comments on other post
 * Sorting the posts.
@@ -28,6 +26,8 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Tables
 
 # DONE
+* Lowercase check when logging in.
+* As a user I should be able to like and dislike posts.
 * See other profiles
 * When changing email, check if email excists in database
 * As a user I should be able to edit my posts.
