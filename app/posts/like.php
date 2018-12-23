@@ -21,9 +21,6 @@ if (is_logged_in() && isset($_GET['post_id'])){
   if (!$check_for_like){
     $statement = $pdo->prepare('INSERT INTO likes(post_id,
       user_id, created_at) VALUES(:post_id, :user_id, :created_at)');
-      if (!$statement){
-        die(var_dump($pdo->errorInfo()));
-      }
       $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
       $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
       $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);

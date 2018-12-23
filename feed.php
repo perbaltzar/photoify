@@ -37,7 +37,9 @@ foreach ($posts as $post) :?>
   <?php else: ?>
     <a href="profile-guest.php?profile_id=<?=$post['user_id'];?>"><?=$post['username'];?>:</a><br>
   <?php endif; ?>
+  <a href="post-view.php?post_id=<?=$post['post_id'];?>">
   <img style="width: 150px; height: 150px;" src="<?='/assets/uploads/'.$post['content']?>">
+  </a>
   <br>
   <p><?=$post['description'];?></p>
   <br>
@@ -64,8 +66,8 @@ foreach ($posts as $post) :?>
   // If post is not by current user
   // Putting out like and unlike
   else: ?>
-    <a href="app/posts/like.php?post_id=<?=$post['post_id'];?>">Like</a>
-    <a href="app/posts/unlike.php?post_id=<?=$post['post_id'];?>">Unlike</a>
+    <a href="app/posts/like.php?post_id=<?=$post['post_id'];?>&redirect=feed.php">Like</a>
+    <a href="app/posts/unlike.php?post_id=<?=$post['post_id'];?>&redirect=feed.php">Unlike</a>
     <br><br><br>
     <br>
   <?php endif; ?>
