@@ -5,6 +5,8 @@ require __DIR__.'/views/header.php';
 
 if (is_logged_in() && isset($_GET['post_id'])){
   $post_id = $_GET['post_id'];
+
+
   // Collecting data from database, tables users and posts
   $statement = $pdo->prepare(
     "SELECT p.id as post_id, p.content, p.description, p.created_at, p.created_at,
@@ -16,7 +18,15 @@ if (is_logged_in() && isset($_GET['post_id'])){
   // Saving database in variable
   $post = $statement->fetch(PDO::FETCH_ASSOC);
 
-  
+
+  // Collecting comments from database
+  $statement = $pdo->prepare('SELECT c.id as comment_id, c.content,
+    c.created_at, u.username, u.id as user_id, u.profile_picture
+    FROM comments c INNER JOIN users u WHERE u.id = c.user_id AND c.post_id = :post_id'
+  );
+  $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+  $statement->execute();
+  $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 ?>
@@ -65,7 +75,17 @@ if (is_logged_in() && isset($_GET['post_id'])){
       <br><br><br>
       <br>
     <?php endif; ?>
+    <!-- PRINTING OUT COMMENTS -->
 
+    <?php foreach ($comments as $comment): ?>
+      <?=$comment['content'];?>
+    <?php endforeach; ?>
+    <!-- FORM FOR POSTING COMMENTS -->
+    Comment:
+    <form action="app/posts/comment.php?post_id=<?=$post_id?>" method="post">
+      <textarea name="" rows="8" cols="80"></textarea>
+      <button type="submit" name="button">Submit</button>
+    </form>
 
   </center>
   </body>
