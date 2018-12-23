@@ -68,7 +68,7 @@ foreach ($posts as $post) :
     ?>
     Number of likes: <?=$likes?><br>
     <a href="app/posts/like.php?post_id=<?=$post['post_id'];?>">Like</a>
-    <a href="app/posts/like.php?post_id=<?=$post['post_id'];?>">Unlike</a>
+    <a href="app/posts/unlike.php?post_id=<?=$post['post_id'];?>">Unlike</a>
     <br><br><br>
     <br>
   <?php endif; ?>
