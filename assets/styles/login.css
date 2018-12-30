@@ -1,0 +1,42 @@
+.login-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  height: 100vh;
+}
+.login-logo{
+  height: 30vh;
+  margin-bottom: 10vh;
+}
+.login-button{
+  font-family: 'Dosis', sans-serif;
+  font-weight: semibold;
+  color: var(--bg-color);
+  font-size: 4vh;
+  height: 8vh;
+  width: 70vw;
+  background-color: var(--primary);
+  letter-spacing: 1vw;
+  border-radius: 3vh;
+}
+.login-input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid var(--font);
+  width: 70vw;
+  font-size: 3vh;
+  color: var(--grey);
+}
+.login-label{
+  position: absolute;
+  font-size: 4vh;
+  text-align: center;
+  transform: translateY(-6vh);
+}
+.login-group{
+  margin: 3vh 0;
+  height: 10vh;
+}
+.login-input:focus{
+}

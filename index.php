@@ -4,12 +4,7 @@ declare(strict_types=1);
 require __DIR__.'/views/header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Photoify</title>
-  </head>
+
   <body>
     <h1>PHOTOIFY</h1>
     <?php

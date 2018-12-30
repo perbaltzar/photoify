@@ -1,0 +1,12 @@
+:root {
+  --bg-color: white;
+  --primary: #FCD36A;
+  --secondary: #2D1740;
+  --grey: #686868;
+  --font: black;
+
+}
+*{
+  font-family: 'Roboto', sans-serif;
+  color: var(--font);
+}

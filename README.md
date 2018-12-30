@@ -1,18 +1,17 @@
-# Photoify
+# PHOTOIFY
 [<img src="https://media.giphy.com/media/ZPG07vJFcpXTG/giphy.gif" width="100%">](https://media.giphy.com/media/ZPG07vJFcpXTG/giphy.gif)
 The making of a Instagram clone in PHP, HTML, Javascript and CSS
 
-# Installing
+## INSTALLING
 Clone or download the repo using this [link](https://github.com/perbaltzar/photoify.git)
 Install or use an existing server software to read the php-files. MAMP for example.
 
-# TO DO
+### BACKEND
 
 * Max size for file uploads
 * Mulitiple files
 * Which file types should be allowed
 * Scrolling through all/friends post.
-* Comments on other post
 * Sorting the posts.
 * Report
 * Have seen this post function
@@ -20,12 +19,19 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Error messages
 * Username to linked to
 
-# DOING
+### FRONT END
+
+* Make a graphic structure
+* Chose color scheme
+* Basically Everything
+
+### DOING
 * Folder structure
 * Database
 * Tables
 
-# DONE
+### DONE
+* Comments on other post
 * Lowercase check when logging in.
 * As a user I should be able to like and dislike posts.
 * See other profiles
@@ -41,8 +47,8 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Change folder structure for picture, folder in assets or root folder and without
 pathway, only file name.
 
-# Creator
+### CREATOR
 [Per Baltzar](https://github.com/perbaltzar)
 
-# Testers
+### TESTERS
 No one yet
