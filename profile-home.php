@@ -27,5 +27,8 @@ require __DIR__.'/views/header.php';
     <a href="/views/edit/profile.php">Edit info...</a><br>
     <a href="/app/users/delete.php">Delete my user</a>
   </center>
+  <?php
+  require __DIR__.'/views/navbar.php';
+  ?>
   </body>
 </html>

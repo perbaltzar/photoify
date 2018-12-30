@@ -1,0 +1,28 @@
+.feed-img{
+  width: 100vw;
+  height: 100vw;
+}
+.feed-avatar{
+  border-radius: 50%;
+  width: 9vh;
+  height: 9vh;
+  margin: 1vw 3vw;
+}
+.feed-avatar-link{
+  font-size: 4vh;
+}
+.feed-avatar-container{
+  display: flex;
+  align-items: center;
+}
+.feed-name-container{
+  display: flex;
+  flex-flow: column;
+}
+.feed-like{
+  height: 4vh;
+  width: 4vh;
+}
+.feed-name-container a{
+  text-decoration: none;
+}

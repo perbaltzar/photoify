@@ -21,6 +21,9 @@ if (is_logged_in()){
     <title></title>
   </head>
   <body>
+    <?php
+    require __DIR__.'/views/navbar.php';
+    ?>
     <center>
     <h1>This Is Someone Else's Profile</h1>
     Name: <?= $profile['first_name']." ".$profile['last_name'];?> <br>

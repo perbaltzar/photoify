@@ -16,5 +16,8 @@ require __DIR__.'/views/header.php';
       <textarea name="description">Description</textarea>
       <button type="submit">Upload</button>
     </form>
+    <?php
+    require __DIR__.'/views/navbar.php';
+    ?>
   </body>
 </html>

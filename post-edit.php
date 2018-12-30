@@ -40,5 +40,8 @@ require __DIR__.'/app/autoload.php';
     <?php else: ?>
         Couldn't find your post, please try again
     <?php endif; ?>
+    <?php
+    require __DIR__.'/views/navbar.php';
+    ?>
   </body>
 </html>

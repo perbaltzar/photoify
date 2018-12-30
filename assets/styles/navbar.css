@@ -1,0 +1,21 @@
+.navbar{
+  height: 7vh;
+  width: 100vw;
+  background-color: var(--primary);
+  position: fixed;
+  top: 93vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.navbar-icon{
+  background-color: transparent;
+  color: white;
+  height: 5vh;
+  width: 5vh;
+  padding: 0 8vw;
+}
+.navbar-icon path{
+  color: white;
+}

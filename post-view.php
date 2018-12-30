@@ -91,7 +91,9 @@ if (is_logged_in() && isset($_GET['post_id'])){
       <textarea name="comment" rows="8" cols="80"></textarea>
       <button type="submit" name="button">Submit</button>
     </form>
-
+    <?php
+    require __DIR__.'/views/navbar.php';
+    ?>
   </center>
   </body>
 </html>
