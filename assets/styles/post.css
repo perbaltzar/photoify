@@ -1,0 +1,41 @@
+.post-upload{
+  font-family: 'Dosis', sans-serif;
+  font-weight: semibold;
+  color: var(--bg-color);
+  font-size: 4vh;
+  height: 8vh;
+  width: 70vw;
+  background-color: var(--primary);
+  letter-spacing: 1vw;
+  border-radius: 3vh;
+}
+.post-upload-container{
+  font-size: 2vh;
+}
+.post-preview{
+  width: 90vw;
+  height: 90vw;
+}
+
+.post-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  width: 100vw;
+  margin: 0;
+}
+.post-description-container{
+  font-size: 2vh;
+}
+.post-description{
+  border: 3px solid black;
+  width: 90vw;
+  height: 25vh;
+}
+.post-form{
+  width: 90%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}

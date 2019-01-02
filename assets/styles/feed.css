@@ -18,11 +18,33 @@
 .feed-name-container{
   display: flex;
   flex-flow: column;
+  font-size: 3vw;
+  color: var(--grey);
 }
 .feed-like{
-  height: 4vh;
-  width: 4vh;
+  height: 5vh;
+  width: 5vh;
+  margin-right: 1vh;
 }
 .feed-name-container a{
   text-decoration: none;
+}
+.feed-interaction-container{
+  color: var(--grey);
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  font-size: 3vh;
+}
+.feed-interaction-container div{
+  margin-left: 1vh;
+}
+.feed-description{
+  font-size: 34px;
+  padding: 0 1vh 10vh 1vh;
+}
+.feed-edit{
+  height: 5vh;
+  width: 5vh;
+  margin-left: 50vw;
 }

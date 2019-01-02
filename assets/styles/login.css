@@ -1,13 +1,13 @@
 .login-container{
   display: flex;
-  justify-content: center;
+  justify-content:space-between;
   align-items: center;
   flex-flow: column;
   height: 100vh;
 }
 .login-logo{
   height: 30vh;
-  margin-bottom: 10vh;
+  margin: 10vh 0;
 }
 .login-button{
   font-family: 'Dosis', sans-serif;
@@ -39,4 +39,8 @@
   height: 10vh;
 }
 .login-input:focus{
+}
+.login-register{
+  font-size: 2vh;
+
 }

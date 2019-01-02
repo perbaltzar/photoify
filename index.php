@@ -14,7 +14,7 @@ $statement = $pdo->prepare(
 $statement->execute();
 // Saving database in variable
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+$posts = array_reverse($posts);
 // Counting the rows in likes table
 $statement = $pdo->prepare('SELECT COUNT(*) FROM likes');
 $statement->execute();
@@ -43,6 +43,10 @@ if (!$statement){
   $statement->execute();
   $comments = $statement->fetch(PDO::FETCH_ASSOC);
   $comments = $comments["COUNT(*)"];
+  // Calculating how long ago post was posted
+  $ago = time()-strtotime($post['created_at']);
+  $ago = date('d', $ago);
+
   ?>
 
   <div class="feed-container">
@@ -51,55 +55,41 @@ if (!$statement){
       <?php if (is_owner($post['user_id'], $_SESSION['user']['id'])): ?>
         <div class="feed-name-container">
           <a class="feed-avatar-link" href="profile-home.php"><?=$post['username'];?></a>
-          <?=$post['created_at']?>
+          <?=$ago?> days ago
+        </div>
+        <div class="feed-edit-container">
+
+          <a href="post-edit.php?post_id=<?=$post['post_id']?>"><img class="feed-edit" src="assets/icons/edit.svg"></a>
         </div>
       <?php else: ?>
         <div class="feed-name-container">
           <a class="feed-avatar-link" href="profile-guest.php?profile_id=<?=$post['user_id'];?>"><?=$post['username'];?></a>
-          <?=$post['created_at']?>
+          <?=$ago?> days ago
         </div>
+
+
       <?php endif; ?>
     </div>
     <div class="feed-img-container">
-    <a href="post-view.php?post_id=<?=$post['post_id'];?>">
-      <img class="feed-img" src="<?='/assets/uploads/'.$post['content']?>">
-    </a>
-  </div>
-    <div class="feed-button-container">
-      <?=$likes?> likes -
-      <?=$comments?> comments
+      <a href="post-view.php?post_id=<?=$post['post_id'];?>">
+        <img class="feed-img" src="<?='/assets/uploads/'.$post['content']?>">
+      </a>
+    </div>
+    <div class="feed-interaction-container">
+      <div>
+        <?=$likes?> likes -
+        <?=$comments?> comments
+      </div>
       <a href="app/posts/like.php?post_id=<?=$post['post_id'];?>&redirect=index.php">
       <img class="feed-like"src="assets/icons/heart.svg">
-      <!--
-      link to unlike
-      <a href="app/posts/unlike.php?post_id=<?=$post['post_id'];?>&redirect=index.php">Unlike</a>
-      -->
+
     </a>
 
     </div>
     <div class="feed-description">
       <p><?=$post['description'];?></p>
     </div>
-
-    <!-- Likebutton -->
-
-
-
-    <?php
-    // If post is by current user
-    // Putting out edit and delete
-    if (is_owner($post['user_id'], $_SESSION['user']['id'])): ?>
-    <a href="app/posts/delete.php?post_id=<?=$post['id']?>">Delete this post</a>
-    <a href="post-edit.php?post_id=<?=$post['id']?>">Edit this post</a>
-    <br>
-    <?php
-    // If post is not by current user
-    // Putting out like and unlike
-  else: ?>
-  <br><br><br>
-  <br>
-<?php endif; ?>
-</div>
+  </div>
 <?php endforeach; ?>
 <?php
 require __DIR__.'/views/navbar.php';
