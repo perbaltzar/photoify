@@ -37,6 +37,7 @@ if (!$statement){
   $statement->execute();
   $likes = $statement->fetch(PDO::FETCH_ASSOC);
   $likes = $likes["COUNT(*)"];
+
   // Counting the comments in comment table
   $statement = $pdo->prepare('SELECT COUNT(*) FROM comments WHERE post_id = :post_id');
   $statement->bindParam(':post_id', $id, PDO::PARAM_INT);

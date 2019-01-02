@@ -1,0 +1,33 @@
+.profile-post{
+  width: 30vw;
+  height: 30vw;
+}
+.profile-username-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh;
+  width: 100vw;
+  height: 9vh;
+}
+.profile-picture{
+  width: 100vw;
+  height: 100vw;
+}
+.profile-container{
+  display: flex;
+  flex-flow: column;
+}
+.profile-biography{
+  height: 20vh;
+}
+.profile-posts{
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 7vh;
+  grid-gap: 0;
+}
+.profile-followers{
+  margin: 0 5vw;
+}

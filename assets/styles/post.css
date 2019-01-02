@@ -32,6 +32,7 @@
   border: 3px solid black;
   width: 90vw;
   height: 25vh;
+  font-size: 1  vh;
 }
 .post-form{
   width: 90%;
