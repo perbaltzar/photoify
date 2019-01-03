@@ -29,4 +29,4 @@ if (isset($_POST['biography']) && is_logged_in()){
 }
 
 //Redirecting back to profile
-redirect('/home-profile.php');
+redirect('/profile-home.php');

@@ -31,3 +31,33 @@
 .profile-followers{
   margin: 0 5vw;
 }
+.profile-edit-icon{
+  height: 4vh;
+  width: 4vh;
+}
+.profile-edit-menu{
+  display: none;
+  top:9vh;
+  right: 0vw;
+  position: absolute;
+  width: 50vw;
+  height: 18vh;
+  background-color: white;
+}
+.active{
+  display: block;
+}
+.profile-edit-menu li{
+  font-size: 2vh;
+  list-style-type: none;
+  height: 6vh;
+  padding-right: 3vh;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.profile-edit-menu a{
+  text-decoration: none;
+}

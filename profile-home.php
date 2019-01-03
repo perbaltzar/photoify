@@ -57,7 +57,17 @@ if (is_logged_in()){
       <h5><?=$following?></h5>
       <h6>Following</h6>
     </div>
+    <div class="profile-edit">
+      <img class="profile-edit-icon" src="assets/icons/edit.svg" alt="">
+    </div>
+    <div class="profile-edit-menu visible">
+      <ul>
+      <li><a href="views/edit/picture.php">Change Profile Picture</a></li>
+      <li><a href="views/edit/profile.php">Change Info</a></li>
+      <li><a href="app/users/delete.php">Delete Account</a></li>
+    </ul>
 
+    </div>
   </div>
   <div class="profile-picture-container">
     <img class="profile-picture" src="assets/uploads/<?=$_SESSION['user']['profile_picture'];?>">
@@ -65,10 +75,10 @@ if (is_logged_in()){
   <div class="profile-biography">
     <?= $_SESSION['user']['biography']; ?>
   </div>
+
   <div class="profile-posts">
     <?php foreach ($posts as $post): ?>
       <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
-
     <?php endforeach; ?>
   </div>
 
@@ -79,6 +89,9 @@ if (is_logged_in()){
 
 
 </section>
+<script type="text/javascript" src="assets/scripts/profile-home.js">
+
+</script>
 <?php
 require __DIR__.'/views/navbar.php';
 ?>
