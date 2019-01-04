@@ -4,7 +4,6 @@ const preview = document.querySelector('.post-preview');
 
 //Function for putting preview of chosen picture on the page
 const showPreview = (input) => {
-  console.log('hej');
   if (input.files && input.files[0]) {
     let reader = new FileReader();
     reader.onload = (e) => {

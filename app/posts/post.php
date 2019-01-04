@@ -38,7 +38,7 @@ if (isset($_FILES['content']) && is_logged_in()){
   }
 }
 die;
-redirect('/post.php');
+redirect('/feed.php');
 
 
 

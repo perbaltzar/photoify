@@ -22,4 +22,4 @@ if (isset($_SESSION['user'], $_GET['post_id']))
 }else{
   $_SESSION['error'] = 'You\'re Not Logged In';
 }
-redirect('/feed.php');
+redirect('/');
