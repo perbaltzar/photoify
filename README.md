@@ -9,7 +9,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 ### BACKEND
 
 * Max size for file uploads
-* Mulitiple files
+* Mulitiple files?
 * Which file types should be allowed
 * Scrolling through all/friends post.
 * Sorting the posts.
@@ -17,14 +17,19 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Have seen this post function
 * Search for themes. (#hashtag)
 * Error messages
+* Follow user
 
 ### FRONT END
 
 * Make a graphic structure
 * Chose color scheme
-* Basically Everything
 * Counting characters in biography and post description
 * Cropping posts and profile pictures
+* Error messages
+* Edit page
+* Delete page
+* User profile
+*
 
 ### DOING
 * Folder structure
@@ -47,6 +52,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * As a user I should be able to logout.
 * Change folder structure for picture, folder in assets or root folder and without
 pathway, only file name.
+* Preview in uploads.
 
 ### CREATOR
 [Per Baltzar](https://github.com/perbaltzar)
