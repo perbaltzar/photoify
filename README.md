@@ -17,13 +17,14 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Have seen this post function
 * Search for themes. (#hashtag)
 * Error messages
-* Username to linked to
 
 ### FRONT END
 
 * Make a graphic structure
 * Chose color scheme
 * Basically Everything
+* Counting characters in biography and post description
+* Cropping posts and profile pictures
 
 ### DOING
 * Folder structure

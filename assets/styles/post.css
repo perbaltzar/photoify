@@ -16,13 +16,17 @@
   width: 90vw;
   height: 90vw;
 }
-
+.post-preview-container{
+  width: 90vw;
+  height: 90vw;
+}
 .post-container{
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-flow: column;
   width: 100vw;
+  height: 93vh;
   margin: 0;
 }
 .post-description-container{
@@ -32,11 +36,20 @@
   border: 3px solid black;
   width: 90vw;
   height: 25vh;
-  font-size: 1  vh;
+  font-size: 3vh;
 }
+
 .post-form{
   width: 90%;
+  height: 9vh;
   display: flex;
   flex-flow: column;
   align-items: center;
+}
+.post-file{
+  font-family: 'Dosis', sans-serif;
+  color: white;
+  background-color: var(--primary);
+  font-size: 3vh;
+  width: 30vw;
 }

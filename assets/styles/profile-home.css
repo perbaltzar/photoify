@@ -1,14 +1,17 @@
 .profile-post{
-  width: 30vw;
-  height: 30vw;
+  width: 33vw;
+  height: 33vw;
 }
 .profile-username-container{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 3vh;
   width: 100vw;
   height: 9vh;
+}
+.profile-username{
+  padding-left: 2vh;
 }
 .profile-picture{
   width: 100vw;
@@ -19,7 +22,9 @@
   flex-flow: column;
 }
 .profile-biography{
-  height: 20vh;
+  height: 16vh;
+  font-size: 2vh;
+  padding: 2vh 2vh;
 }
 .profile-posts{
   width: 100vw;
@@ -29,7 +34,12 @@
   grid-gap: 0;
 }
 .profile-followers{
-  margin: 0 5vw;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.profile-edit{
+  padding-right: 2vh;
 }
 .profile-edit-icon{
   height: 4vh;
@@ -60,4 +70,13 @@
 }
 .profile-edit-menu a{
   text-decoration: none;
+}
+.profile-headline{
+  font-size: 3vh;
+}
+.profile-sub-headline{
+  font-weight: 200;
+}
+.profile-followers{
+  margin-right: -9vh;
 }

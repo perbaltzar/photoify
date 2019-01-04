@@ -45,17 +45,17 @@ if (is_logged_in()){
 
 <section class="profile-container">
   <div class="profile-username-container">
-    <div>
-      <h5><?= $_SESSION['user']['username']; ?></h5>
-      <h6><?= $_SESSION['user']['first_name']." ".$_SESSION['user']['last_name'];?></h6>
+    <div class="profile-username">
+      <h5 class="profile-headline"><?= $_SESSION['user']['username']; ?></h5>
+      <h6 class="profile-sub-headline"><?= $_SESSION['user']['first_name']." ".$_SESSION['user']['last_name'];?></h6>
     </div>
     <div class="profile-followers">
-      <h5><?=$followers?></h5>
-      <h6>Followers</h6>
+      <h5 class="profile-headline"><?=$followers?></h5>
+      <h6 class="profile-sub-headline">Followers</h6>
     </div>
     <div class="profile-followers">
-      <h5><?=$following?></h5>
-      <h6>Following</h6>
+      <h5 class="profile-headline"><?=$following?></h5>
+      <h6 class="profile-sub-headline">Following</h6>
     </div>
     <div class="profile-edit">
       <img class="profile-edit-icon" src="assets/icons/edit.svg" alt="">
