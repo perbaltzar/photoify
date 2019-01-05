@@ -1,14 +1,24 @@
-
+<section class="edit-section">
     <h1 class="edit-headline">CHANGE PASSWORD</h1>
     <form class="edit-form" action="/../../app/users/edit.php" method="post">
-      <label for="firstName">Password</label>
-      <input class="edit-input" type="text" name="firstName" value="<?= $_SESSION['user']['first_name'];?>" required>
-
-      <label for="lastName">New Password</label>
-      <input class="edit-input" type="text" name="lastName" value="<?= $_SESSION['user']['last_name'];?>"placeholder="Last Name" required>
-
-      <label for="email">Repeat New Password</label>
-      <input class="edit-input" type="email" name="email" value="<?= $_SESSION['user']['email'];?>"placeholder="Email" required>
-
+      <div class="edit-div">
+        <div class="edit-label">
+          <label for="firstName">Password</label>
+        </div>
+        <input class="edit-input" type="password" name="password" required>
+      </div>
+      <div class="edit-div">
+        <div class="edit-label">
+          <label for="lastName">New Password</label>
+        </div>
+        <input class="edit-input" type="password" name="new-password" required>
+      </div>
+      <div class="edit-div">
+        <div class="edit-label">
+          <label for="email">Repeat New Password</label>
+        </div>
+        <input class="edit-input" type="password" name="repeat-password" required>
+      </div>
       <button type="submit" class="edit-button">Save</button>
     </form>
+</section>

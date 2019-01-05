@@ -7,7 +7,7 @@ require __DIR__.'/../header.php';
 
 
 ?>
-
+<section class="edit-section">
 <h1>EDIT BIOGRAPHY</h1>
   <form action="/../../app/users/biography.php" method="post">
     <label for="biography">Biography</label>
@@ -15,3 +15,4 @@ require __DIR__.'/../header.php';
     <br>
     <button type="submit" class="">Save</button>
   </form>
+</section>

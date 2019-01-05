@@ -14,7 +14,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],
   $firstName = filter_var(trim($_POST['firstName']), FILTER_SANITIZE_STRING);
   $lastName = filter_var(trim($_POST['lastName']), FILTER_SANITIZE_STRING);
   $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
-  $description = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
+  $biography = filter_var(trim($_POST['biography']), FILTER_SANITIZE_STRING);
   $updated_at = date("Y-m-d");
   $id = (int) $_SESSION['user']['id'];
 
@@ -28,7 +28,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],
 
   if (password_verify($_POST['password'], $user['password']))
   {
-    // die(var_dump($user));
+
 
     // Check if email excists in the database
     $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
@@ -38,11 +38,13 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],
     }
     $statement->execute();
     $check_for_email = $statement->fetch(PDO::FETCH_ASSOC);
-    if ($check_for_email) {
+    // die(var_dump($check_for_email));
+    if ($check_for_email && $check_for_email['email'] !== $user['email']) {
       $_SESSION['error'] = 'Email already excist in database';
+      redirect('/profile-edit.php?edit=profile');
     }else{
       // Updating Database with new values
-      $statement = $pdo->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email, username = :username, updated_at = :updated_at WHERE id = :id");
+      $statement = $pdo->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email, username = :username, biography = :biography, updated_at = :updated_at WHERE id = :id");
       if (!$statement){
         die(var_dump($pdo->errorInfo()));
       }
@@ -51,12 +53,13 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],
       $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
       $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
       $statement->bindParam(':email', $email, PDO::PARAM_STR);
+      $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
       $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
       $statement->execute();
 
 
       // Updating the Session Variable
-      $_SESSION['user'] = getUserByID($id, $pdo);
+      $_SESSION['user'] = get_user_by_id($id, $pdo);
     }
   }
   redirect('/../../profile-home.php');
