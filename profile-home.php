@@ -21,7 +21,7 @@ if (is_logged_in()){
 
   // Counting number of followers in database
   $statement = $pdo->prepare('SELECT COUNT(*) FROM followers WHERE user_id = :user_id');
-  $statement->bindParam(':post_id', $id, PDO::PARAM_INT);
+  $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
   $statement->execute();
   $followers = $statement->fetch(PDO::FETCH_ASSOC);
   $followers = $followers["COUNT(*)"];
@@ -30,7 +30,7 @@ if (is_logged_in()){
   }
   // Counting number of followings in database
   $statement = $pdo->prepare('SELECT COUNT(*) FROM followers WHERE follower_id = :user_id');
-  $statement->bindParam(':post_id', $id, PDO::PARAM_INT);
+  $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
   $statement->execute();
   $following = $statement->fetch(PDO::FETCH_ASSOC);
   $following = $following["COUNT(*)"];
@@ -62,12 +62,11 @@ if (is_logged_in()){
     </div>
     <div class="profile-edit-menu visible">
       <ul>
-      <li><a href="views/edit/picture.php">Change Profile Picture</a></li>
-      <li><a href="profile-edit.php?edit=profile">Edit User</a></li>
-      <li><a href="profile-edit.php?edit=password">Change Password</a></li>
-      <li><a href="app/users/logout.php">Log Out</a></li>
-    </ul>
-
+        <li><a href="views/edit/picture.php">Change Profile Picture</a></li>
+        <li><a href="profile-edit.php?edit=profile">Edit User</a></li>
+        <li><a href="profile-edit.php?edit=password">Change Password</a></li>
+        <li><a href="app/users/logout.php">Log Out</a></li>
+      </ul>
     </div>
   </div>
   <div class="profile-picture-container">
@@ -83,9 +82,7 @@ if (is_logged_in()){
     <?php endforeach; ?>
   </div>
 
-  Email: <?= $_SESSION['user']['email']; ?><br>
 
-  Member since: <?= $_SESSION['user']['created_at']; ?><br>
 
 
 
