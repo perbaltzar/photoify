@@ -1,16 +1,6 @@
-<?php
 
-declare(strict_types=1);
-require __DIR__.'/../header.php';
-?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>EDIT PROFILE</h1>
+
+    <h1 class="edit-headline">EDIT PROFILE</h1>
     <form action="/../../app/users/edit.php" method="post">
       <label for="firstName">First Name</label>
       <input class="" type="text" name="firstName" value="<?= $_SESSION['user']['first_name'];?>" required>
@@ -29,5 +19,3 @@ require __DIR__.'/../header.php';
       <br>
       <button type="submit" class="">Save</button>
     </form>
-  </body>
-</html>

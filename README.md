@@ -17,7 +17,8 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Have seen this post function
 * Search for themes. (#hashtag)
 * Error messages
-* Follow user
+* Follow users
+* Delete pictures from files system when deleted
 
 ### FRONT END
 
@@ -29,7 +30,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Edit page
 * Delete page
 * User profile
-*
+* Edit post page
 
 ### DOING
 * Folder structure

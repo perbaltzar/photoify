@@ -1,0 +1,54 @@
+.edit-section{
+  width: 100vw;
+  height: 93vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.edit-headline{
+  padding-top: 2vh;
+  font-size: 5vh;
+  font-family: 'Dosis', sans-serif;
+}
+.edit-form{
+  padding-top: 5vh;
+  height: 80vh;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  font-size: 2.5vh;
+}
+.edit-input{
+  height: 6vh;
+  font-size: 3vh;
+  width: 75vw;
+  border: 1px solid black;
+  padding-left: 2vw;
+}
+.edit-div{
+  width: 90vw;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3vh;
+}
+.edit-label{
+  display: flex;
+  align-items: center;
+  padding-right: 3vh;
+  width: 30vw;
+}
+.edit-button{
+  font-family: 'Dosis', sans-serif;
+  font-weight: semibold;
+  color: var(--bg-color);
+  font-size: 4vh;
+  height: 8vh;
+  width: 80vw;
+  background-color: var(--primary);
+  letter-spacing: 1vw;
+  border-radius: 3vh;
+  border: 0;
+  margin-top: 10vh;
+  align-self: center;
+}

@@ -2,33 +2,52 @@
 // Always start by loading the default application setup.
 require __DIR__.'/views/header.php';
 ?>
-<center>
-<h1>Register User</h1>
-<form action="app/users/register.php" method="post">
+<section class="edit-section">
 
-          <label for="firstName">First Name</label>
-          <input class="" type="text" name="firstName" placeholder="First Name" required>
-          <br>
-          <label for="lastName">Last Name</label>
-          <input class="" type="text" name="lastName" placeholder="Last Name" required>
-          <br>
-          <label for="email">Email</label>
-          <input class="" type="email" name="email" placeholder="Email" required>
-          <br>
-          <label for="email">Username</label>
-          <input class="" type="text" name="username" placeholder="Username" required>
-          <br>
-          <label for="password">Password</label>
-          <input class="" type="password" name="password" required>
-          <br>
-          <label for="password">Confirm Password</label>
-          <input class="" type="password" name="confirmPassword" required>
-          <br>
-      <button type="submit" class="">Register</button>
+  <h1 class="edit-headline">REGISTER USER</h1>
+  <form class="edit-form" action="app/users/register.php" method="post">
+    <div class="edit-firstname edit-div">
+      <div class="edit-label">
+        <label for="firstName">First Name</label>
+      </div>
+      <input class="edit-input" type="text" name="firstName" placeholder="First Name" required>
+    </div>
+    <div class="edit-lastname edit-div">
+      <div class="edit-label">
+        <label for="lastName">Last Name</label>
+      </div>
+      <input class="edit-input" type="text" name="lastName" placeholder="Last Name" required>
+    </div>
+    <div class="edit-email edit-div">
+      <div class="edit-label">
+        <label for="email">Email</label>
+      </div>
+      <input class="edit-input" type="email" name="email" placeholder="Email" required>
+    </div>
+    <div class="edit-username edit-div">
+      <div class="edit-label">
+        <label for="username">Username</label>
+      </div>
+      <input class="edit-input" type="text" name="username" placeholder="Username" required>
+    </div>
+    <div class="edit-password edit-div">
+      <div class="edit-label">
+        <label for="password">Password</label>
+      </div>
+      <input class="edit-input" type="password" name="password" required>
+    </div>
+    <div class="edit-confirm edit-div">
+      <div class="edit-label">
+        <label for="password">Confirm Password</label>
+      </div>
+      <input class="edit-input" type="password" name="confirmPassword" required>
+    </div>
+    <button type="submit" class="edit-button">Register</button>
   </form>
-  <?php
-  if (isset($_SESSION['error'])){
-    echo $_SESSION['error'];
-  }
-  ?>
-</center>
+</section>
+<?php
+if (isset($_SESSION['error'])){
+  echo $_SESSION['error'];
+}
+
+?>

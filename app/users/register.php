@@ -52,7 +52,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
 
     // Storing userinfo in SESSION-variable
     $_SESSION['user'] = $user;
-    redirect('/');
+    redirect('/feed.php');
   }else{
     //PASSWORDS DOESN'T MATCH
     // die(var_dump('hej'));
