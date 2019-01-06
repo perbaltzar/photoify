@@ -8,7 +8,7 @@ if (isset($_FILES['content']) && is_logged_in()){
   // die(var_dump($post));
 
 // Checking file types and size
-  if ($post['type'] === 'image/jpeg'){
+  if ($post['type'] === 'image/jpeg' || $post['type'] === 'image/png' || $post['type'] === 'image/gif'){
     if ($post['size'] < 3000000){
       $id = (int) $_SESSION['user']['id'];
       $path = '/../../assets/uploads/';

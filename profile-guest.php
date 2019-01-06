@@ -57,7 +57,7 @@ if (is_logged_in()){
       <img class="profile-picture" src="assets/uploads/<?=$profile['profile_picture'];?>">
       <div class="guest-follow-buttons">
         <div class="guest-follow-button">
-          <a href="">Follow</a>
+          <a href="app/users/follow.php?follow_id=<?=$profile_id?>">Follow</a>
         </div>
         <div class="guest-follow-button">
           <a href="">Message</a>
