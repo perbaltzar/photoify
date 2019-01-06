@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__.'/app/autoload.php';
+require __DIR__.'/views/header.php';
 
  if (isset($_GET['post_id']) && is_logged_in()){
    $user_id = (int)$_SESSION['user']['id'];
@@ -21,27 +21,29 @@ require __DIR__.'/app/autoload.php';
    // die(var_dump($post));
  }
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Edit Post</title>
-  </head>
-  <body>
-    <?php if ($post): ?>
-      <!-- Show picture here -->
 
-      <form method="post" enctype="multipart/form-data" action="app/posts/edit.php?post_id=<?=$post['id']?>">
-        <!-- <label for="uploadFiles">Choose a JPG image to upload</label> -->
-        <label for="description">Edit your description</label>
-        <textarea name="description"><?= $post['description'];?></textarea>
-        <button type="submit">Save</button>
+    <?php
+
+    if ($post): ?>
+    <section class="edit-post-container">
+      <h1 class="edit-headline">EDIT POST</h1>
+      <div class="edit-post-preview-container">
+        <img class="edit-post-preview" src="assets/uploads/<?=$post['content'];?>">
+      </div>
+      <form class="post-form" method="post" enctype="multipart/form-data" action="app/posts/edit.php?post_id=<?=$post['id']?>">
+        <div class="post-description-container">
+          Edit your description
+          <textarea class="post-description" placeholder="" name="description"><?=$post['description']?></textarea>
+        </div>
+        <button class="post-upload"type="submit">SAVE</button>
       </form>
+    </section>
     <?php else: ?>
         Couldn't find your post, please try again
     <?php endif; ?>
     <?php
     require __DIR__.'/views/navbar.php';
     ?>
+
   </body>
 </html>

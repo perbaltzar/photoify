@@ -26,6 +26,10 @@
   width: 5vh;
   margin-right: 1vh;
 }
+.feed-name-container{
+  width: 65vw;
+
+}
 .feed-name-container a{
   text-decoration: none;
 }
@@ -46,5 +50,5 @@
 .feed-edit{
   height: 5vh;
   width: 5vh;
-  margin-left: 50vw;
+  margin-left: 0vw;
 }

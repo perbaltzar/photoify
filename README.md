@@ -8,8 +8,6 @@ Install or use an existing server software to read the php-files. MAMP for examp
 
 ### BACKEND
 
-* Max size for file uploads
-* Mulitiple files?
 * Which file types should be allowed
 * Scrolling through all/friends post.
 * Sorting the posts.
@@ -17,20 +15,15 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Have seen this post function
 * Search for themes. (#hashtag)
 * Error messages
-* Follow users
 * Delete pictures from files system when deleted
 
 ### FRONT END
 
 * Make a graphic structure
-* Chose color scheme
 * Counting characters in biography and post description
 * Cropping posts and profile pictures
 * Error messages
-* Edit page
-* Delete page
-* User profile
-* Edit post page
+* Make an edit menu for post like on your profile
 
 ### DOING
 * Folder structure
@@ -38,10 +31,12 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Tables
 
 ### DONE
+* Chose color scheme
 * Comments on other post
 * Lowercase check when logging in.
 * As a user I should be able to like and dislike posts.
 * See other profiles
+* Follow other users
 * When changing email, check if email excists in database
 * As a user I should be able to edit my posts.
 * As a user I should be able to delete my posts.

@@ -8,21 +8,21 @@
   background-color: var(--primary);
   letter-spacing: 1vw;
   border-radius: 3vh;
+  margin-top: 1vh;
 }
 .post-upload-container{
   font-size: 2vh;
 }
 .post-preview{
-  width: 90vw;
-  height: 90vw;
+  width: 80vw;
+  height: 80vw;
 }
 .post-preview-container{
-  width: 90vw;
-  height: 90vw;
+  width: 80vw;
+  height: 80vw;
 }
 .post-container{
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex-flow: column;
   width: 100vw;
@@ -35,13 +35,13 @@
 .post-description{
   border: 3px solid black;
   width: 90vw;
-  height: 25vh;
-  font-size: 3vh;
+  height: 20vh;
+  font-size: 2vh;
 }
 
 .post-form{
   width: 90%;
-  height: 9vh;
+  height: 93vh;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -52,4 +52,16 @@
   background-color: var(--primary);
   font-size: 3vh;
   width: 30vw;
+}
+/* EXTRA DESIGN FOR EDIT POST*/
+.edit-post-container{
+  width: 100vw;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 93vh;
+}
+.edit-post-preview{
+  width: 90vw;
+  height:  90vw;
 }
