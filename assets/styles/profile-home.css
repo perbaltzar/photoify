@@ -117,3 +117,9 @@
 .guest-follow-button a{
   text-decoration: none;
 }
+.guest-start-follow{
+  background-color: var(--secondary);
+}
+.guest-start-follow a{
+  color: var(--primary);
+}
