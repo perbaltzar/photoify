@@ -16,6 +16,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $profile_picture = 'default-profile.jpg';
+    $biography = 'No biography written yet';
     $created_at = date("Y-m-d");
 
     // Checking database to see if email already excist
@@ -30,8 +31,8 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
 
     // Connect to database
     $statement = $pdo->prepare(
-      'INSERT INTO users(email, first_name, last_name, username, password, created_at, profile_picture)
-      VALUES(:email, :first_name, :last_name, :username, :password, :created_at, :profile_picture)'
+      'INSERT INTO users(email, first_name, last_name, username, password, created_at, profile_picture, biography)
+      VALUES(:email, :first_name, :last_name, :username, :password, :created_at, :profile_picture, :biography)'
     );
 
     // Binding the variables and executing
@@ -42,6 +43,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     $statement->bindParam(':password', $password, PDO::PARAM_STR);
     $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
     $statement->bindParam(':profile_picture', $profile_picture, PDO::PARAM_STR);
+    $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
     $statement->execute();
 
     // Collecting the data from database to keep new user logged in.

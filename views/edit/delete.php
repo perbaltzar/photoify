@@ -1,18 +1,7 @@
-<?php
 
-declare(strict_types=1);
-require __DIR__.'/../header.php';
-
-
-
-
-?>
 <section class="edit-section">
-<h1>EDIT BIOGRAPHY</h1>
-  <form action="/../../app/users/biography.php" method="post">
-    <label for="biography">Biography</label>
-    <textarea name="biography" rows="8" cols="80" maxlength="200"></textarea>
-    <br>
-    <button type="submit" class="">Save</button>
-  </form>
+<h1 class="edit-headline">DELETE USER</h1>
+    <p>Are you sure you want to delete you account?</p>
+    <a class="edit-button edit-yes-button" href="app/users/delete.php">YES</a>
+    <a class="edit-button edit-no-button" href="profile-home.php">NO</a>
 </section>

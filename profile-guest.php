@@ -44,16 +44,25 @@ if (is_logged_in()){
       <h5 class="profile-headline"><?= $profile['username']; ?></h5>
       <h6 class="profile-sub-headline"><?= $profile['first_name']." ".$profile['last_name'];?></h6>
     </div>
-    <div class="profile-followers">
+    <div class="guest-profile-followers">
       <h5 class="profile-headline"><?=$followers?></h5>
       <h6 class="profile-sub-headline">Followers</h6>
     </div>
-    <div class="profile-followers">
+    <div class="guest-profile-followers">
       <h5 class="profile-headline"><?=$following?></h5>
       <h6 class="profile-sub-headline">Following</h6>
     </div>
+  </div>
     <div class="profile-picture-container">
       <img class="profile-picture" src="assets/uploads/<?=$profile['profile_picture'];?>">
+      <div class="guest-follow-buttons">
+        <div class="guest-follow-button">
+          <a href="">Follow</a>
+        </div>
+        <div class="guest-follow-button">
+          <a href="">Message</a>
+        </div>
+      </div>
     </div>
     <div class="profile-biography">
       <?= $profile['biography']; ?>
@@ -62,6 +71,7 @@ if (is_logged_in()){
       <?php foreach ($posts as $post): ?>
         <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
       <?php endforeach; ?>
+    </div>
   </div>
 </section>
 <?php

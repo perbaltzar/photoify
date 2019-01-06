@@ -35,4 +35,4 @@ if (is_logged_in()){
 }
 
 session_destroy();
-redirect('login.php');
+redirect('/');

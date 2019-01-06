@@ -31,14 +31,14 @@ if (isset($_FILES['content']) && is_logged_in()){
       redirect('/post.php');
 
     }else{
-      echo 'The uploaded file exceeded the file size limit.';
+      $_SESSION['error'] = 'The uploaded file exceeded the file size limit.';
     }
   }else{
-    echo 'The image file type is not allowed.';
+    $_SESSION['error'] = 'The image file type is not allowed.';
   }
 }
 die;
-redirect('/feed.php');
+redirect('/post.php');
 
 
 
