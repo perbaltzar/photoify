@@ -8,7 +8,6 @@ Install or use an existing server software to read the php-files. MAMP for examp
 
 ### BACKEND
 
-* Which file types should be allowed
 * Scrolling through all/friends post.
 * Sorting the posts.
 * Report
@@ -16,21 +15,22 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Search for themes. (#hashtag)
 * Error messages
 * Delete pictures from files system when deleted
-* Not able to follow yourself. 
+* Not able to follow yourself.
 ### FRONT END
 
-* Make a graphic structure
 * Counting characters in biography and post description
 * Cropping posts and profile pictures
 * Error messages
 * Make an edit menu for post like on your profile
 
 ### DOING
+
+### DONE
+* Make a graphic structure
 * Folder structure
 * Database
 * Tables
-
-### DONE
+* Which file types should be allowed
 * Chose color scheme
 * Comments on other post
 * Lowercase check when logging in.

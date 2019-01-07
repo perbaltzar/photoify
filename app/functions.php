@@ -47,3 +47,18 @@ function is_logged_in () : bool
 {
   return isset($_SESSION['user']);
 }
+
+function get_time(int $time): string{
+  if ($time < (60*60))
+  {
+    return date('i', $time)." minutes ago";
+  }elseif ($time > 60*60 && $time < 60*60*24)
+  {
+    return date('H', $time)." hours ago";
+  }
+  elseif ($time > 60*60*24 && $time < 60*60*24*7){
+    return date('d', $time)." days ago";
+  }else{
+    return date('d', $time)." days ago";
+  }
+}

@@ -54,8 +54,9 @@ if (!$statement){
   $comments = $comments["COUNT(*)"];
 
   // Calculating how long ago post was posted
-  $ago = time()-strtotime($post['created_at']);
-  $ago = date('d', $ago);
+  $ago = get_time(time()-strtotime($post['created_at']));
+
+
 
   // Checking if it's liked by user
   $statement = $pdo->prepare('SELECT * FROM likes
@@ -72,7 +73,7 @@ if (!$statement){
       <?php if (is_owner($poster_id, $id)): ?>
         <div class="feed-name-container">
           <a class="feed-avatar-link" href="profile-home.php"><?=$post['username'];?></a>
-          <?=$ago?> days ago
+          <?=$ago?>
         </div>
         <div class="feed-edit-container">
 
@@ -83,7 +84,7 @@ if (!$statement){
       <?php else: ?>
         <div class="feed-name-container">
           <a class="feed-avatar-link" href="profile-guest.php?profile_id=<?=$poster_id;?>"><?=$post['username'];?></a>
-          <?=$ago?> days ago
+          <?=$ago?> 
         </div>
 
 

@@ -1,0 +1,15 @@
+link to delete post:
+<a href="app/posts/delete.php?post_id=<?=$post['post_id']?>">Delete this post</a>
+
+
+<!--
+link to unlike
+<a href="app/posts/unlike.php?post_id=<?=$post['post_id'];?>&redirect=index.php">Unlike</a>
+-->
+
+
+//PRofile links
+<a href="views/edit/picture.php">Upload new...</a>
+<a href="views/edit/biography.php">edit...</a>
+<a href="/views/edit/profile.php">Edit info...</a>
+<a href="/app/users/delete.php">Delete my user</a>

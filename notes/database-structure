@@ -1,0 +1,12 @@
+users: id, first_name, last_name, email, password, created_at, updated_at, username, profile_picture, description
+posts: id, user_id, content, description, created_at, updated_at
+likes: post_id, user_id, created_at
+comments: id, post_id, user_id, content, created_at
+followers: user_id, follower_id, created_at
+
+
+//SELECT QUERY FOR USERS OWN POSTS, USE ON PROFILE PAGE:
+$statement = $pdo->prepare(
+  "SELECT posts.id, user_id, content, description, posts.created_at, posts.updated_at FROM posts
+  JOIN users ON posts.user_id = users.id"
+ );
