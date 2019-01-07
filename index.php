@@ -2,6 +2,11 @@
 
 declare(strict_types=1);
 require __DIR__.'/views/header.php';
+
+// If user is logged in, redirect to feed instead
+if (is_logged_in()){
+  redirect('/feed.php');
+}
 ?>
 
 <article class="login-container">

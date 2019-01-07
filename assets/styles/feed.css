@@ -8,6 +8,9 @@
   height: 9vh;
   margin: 1vw 3vw;
 }
+.all-feed-container{
+  padding-bottom: 7vh;
+}
 .feed-avatar-link{
   font-size: 4vh;
 }

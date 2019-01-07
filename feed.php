@@ -9,7 +9,7 @@ $id = $_SESSION['user']['id'];
 
 // Collecting data from Database
 $statement = $pdo->prepare(
-  "SELECT p.id as post_id, p.content, p.description, p.created_at, p.created_at,
+  "SELECT p.id as post_id, p.content, p.description, p.created_at, p.updated_at,
   u.username, u.id as user_id, u.profile_picture
   FROM posts p INNER JOIN users u WHERE u.id = p.user_id"
 );
@@ -29,7 +29,7 @@ if (!$statement){
 
 
 ?>
-
+<section class="all-feed-container">
   <?php
   // Looping through all the posts
   foreach ($posts as $post) :?>
@@ -76,7 +76,9 @@ if (!$statement){
         </div>
         <div class="feed-edit-container">
 
-          <a href="post-edit.php?post_id=<?=$post_id;?>"><img class="feed-edit" src="assets/icons/edit.svg"></a>
+          <a href="post-edit.php?post_id=<?=$post_id;?>">
+            <img class="feed-edit" src="assets/icons/edit.svg">
+          </a>
         </div>
       <?php else: ?>
         <div class="feed-name-container">
@@ -115,3 +117,4 @@ if (!$statement){
 <?php
 require __DIR__.'/views/navbar.php';
 ?>
+</section>

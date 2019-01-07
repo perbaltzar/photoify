@@ -16,7 +16,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Search for themes. (#hashtag)
 * Error messages
 * Delete pictures from files system when deleted
-
+* Not able to follow yourself. 
 ### FRONT END
 
 * Make a graphic structure
