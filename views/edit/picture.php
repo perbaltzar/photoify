@@ -1,16 +1,22 @@
-<?php
-
-declare(strict_types=1);
-require __DIR__.'/../header.php';
 
 
 
 
-?>
+<section class="edit-section">
+  <h1 class="edit-headline">CHANGE PROFILE PICTURE</h1>
+<div class="post-container">
+    <form class="post-form" method="post" enctype="multipart/form-data" action="/../../app/users/profile-picture.php">
+      <div class="post-upload-container">
+        <label for="uploadFiles">Choose a picture to upload</label>
+        <input class="post-file" type="file" accept="image/*" name="profile_picture" required>
+      </div>
+      <div class="post-preview-container">
+        <img class="post-preview profile-picture-preview" src="assets/images/preview.jpg" alt="">
+      </div>
+      <button class="post-upload"type="submit">UPLOAD</button>
+    </form>
+</div>
+</section>
+<script type="text/javascript" src="assets/scripts/post.js">
 
-<h1>EDIT PROFILE PICTURE</h1>
-<form method="post" enctype="multipart/form-data" action="/../../app/users/profile-picture.php">
-  <label for="uploadFiles">Choose an image to upload</label>
-  <input type="file" accept="image/*" name="profile_picture" required>
-  <button type="submit">Upload</button>
-</form>
+</script>

@@ -8,7 +8,7 @@
   background-color: var(--primary);
   letter-spacing: 1vw;
   border-radius: 3vh;
-  margin-top: 1vh;
+  margin-top: 4vh;
 }
 .post-upload-container{
   font-size: 2vh;
@@ -16,6 +16,7 @@
 .post-preview{
   width: 80vw;
   height: 80vw;
+  margin: 2vh 2vh;
 }
 .post-preview-container{
   width: 80vw;
@@ -38,7 +39,6 @@
   height: 20vh;
   font-size: 2vh;
 }
-
 .post-form{
   width: 90%;
   height: 93vh;

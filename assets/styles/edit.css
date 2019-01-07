@@ -59,3 +59,8 @@
   margin-top: 10vh;
   align-self: center;
 }
+
+/* CHANGING SOME FOR UPLOAD PROFILE PICTURE*/
+.profile-picture-preview{
+  border-radius: 50%;
+}

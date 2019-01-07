@@ -15,7 +15,7 @@ $statement = $pdo->prepare(
 );
 $statement->execute();
 
-// Saving database in variable
+// Saving database in variable and swiching them over so the latest post is put first
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 $posts = array_reverse($posts);
 

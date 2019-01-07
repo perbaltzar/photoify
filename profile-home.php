@@ -62,7 +62,7 @@ if (is_logged_in()){
     </div>
     <div class="profile-edit-menu visible">
       <ul>
-        <li><a href="views/edit/picture.php">Change Profile Picture</a></li>
+        <li><a href="profile-edit.php?edit=picture">Change Profile Picture</a></li>
         <li><a href="profile-edit.php?edit=profile">Edit User</a></li>
         <li><a href="profile-edit.php?edit=password">Change Password</a></li>
         <li><a href="profile-edit.php?edit=delete">Delete User</a></li>

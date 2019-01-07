@@ -3,7 +3,8 @@
 declare(strict_types=1);
 require __DIR__.'/views/header.php';
 ?>
-
+<section class="edit-section">
+    <h1 class="edit-headline">POST A PICTURE</h1>
     <div class="post-container">
         <form class="post-form" method="post" enctype="multipart/form-data" action="app/posts/post.php">
           <div class="post-upload-container">
@@ -20,11 +21,13 @@ require __DIR__.'/views/header.php';
           <button class="post-upload"type="submit">UPLOAD</button>
         </form>
     </div>
+  </section>
     <script type="text/javascript" src="assets/scripts/post.js">
 
     </script>
     <?php
     require __DIR__.'/views/navbar.php';
     ?>
+
   </body>
 </html>

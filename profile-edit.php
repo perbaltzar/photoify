@@ -16,6 +16,8 @@ if (isset($_GET['edit']) && is_logged_in()){
     require __DIR__.'/views/edit/password.php';
   }elseif($edit === 'delete'){
     require __DIR__.'/views/edit/delete.php';
+  }elseif($edit === 'picture'){
+    require __DIR__.'/views/edit/picture.php';
   }else{
     redirect('/profile-home.php');
   }
