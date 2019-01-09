@@ -4,8 +4,8 @@ declare(strict_types=1);
 require __DIR__.'/views/header.php';
 
 if (is_logged_in() && isset($_GET['post_id'])){
-  $post_id = $_GET['post_id'];
-  $id = $_SESSION['user']['id'];
+  $post_id = (int) $_GET['post_id'];
+  $id = (int) $_SESSION['user']['id'];
 
   // Collecting data from database, tables users and posts
   $statement = $pdo->prepare(
@@ -20,31 +20,10 @@ if (is_logged_in() && isset($_GET['post_id'])){
   $post = $statement->fetch(PDO::FETCH_ASSOC);
 
   //Saving variable needed
-  $ago = time()-strtotime($post['created_at']);
-  $ago = date('d', $ago);
-
-  // Collecting comments from database
-  $statement = $pdo->prepare('SELECT c.id as comment_id, c.content,
-    c.created_at, u.username, u.id as user_id, u.profile_picture
-    FROM comments c INNER JOIN users u WHERE u.id = c.user_id AND c.post_id = :post_id'
-  );
-  $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
-  $statement->execute();
-  $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
-  // Counting the rows in likes table
-  $statement = $pdo->prepare('SELECT COUNT(*) FROM likes WHERE post_id = :post_id');
-  $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
-  $statement->execute();
-  $likes = $statement->fetch(PDO::FETCH_ASSOC);
-  $likes = $likes["COUNT(*)"];
-
-  // Checking if it's liked by user
-  $statement = $pdo->prepare('SELECT * FROM likes
-    WHERE post_id = :post_id AND user_id = :user_id');
-    $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
-    $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
-    $statement->execute();
-    $is_liked_by_user = $statement->fetch(PDO::FETCH_ASSOC);
+  $ago = get_time(time()-strtotime($post['created_at']));
+  $comments = get_comments_by_postid($post_id, $pdo);
+  $likes = count_likes($post_id, $pdo);
+  $is_liked_by_user = is_post_liked_by_user($id, $post_id, $pdo);
   }
 
   ?>
@@ -83,11 +62,11 @@ if (is_logged_in() && isset($_GET['post_id'])){
         </div>
         <?php if ($is_liked_by_user): ?>
           <a href="app/posts/unlike.php?post_id=<?=$post_id;?>&redirect=feed.php">
-            <img class="feed-like"src="assets/icons/heart_filled.svg">
+            <img class="like-button"src="assets/icons/heart_filled.svg">
           </a>
         <?php else: ?>
           <a href="app/posts/like.php?post_id=<?=$post_id;?>&redirect=feed.php">
-            <img class="feed-like"src="assets/icons/heart.svg">
+            <img class="like-button"src="assets/icons/heart.svg">
           </a>
         <?php endif; ?>
       </div>

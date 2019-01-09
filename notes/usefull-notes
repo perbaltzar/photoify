@@ -13,3 +13,6 @@ link to unlike
 <a href="views/edit/biography.php">edit...</a>
 <a href="/views/edit/profile.php">Edit info...</a>
 <a href="/app/users/delete.php">Delete my user</a>
+
+
+GILLA KNAPPEN INNE PÅ POST-View leder tillbaka till feed. 

@@ -8,33 +8,12 @@ if (is_logged_in()){
     // Collecting userdata from database
     $profile_id = (int)$_GET['profile_id'];
     $profile = get_user_by_id($profile_id, $pdo);
-    $user_id = $_SESSION['user']['id'];
+    $user_id = (int)$_SESSION['user']['id'];
   }
-  //Collecting posts from database
-  $statement = $pdo->prepare(
-    "SELECT * FROM posts WHERE user_id = :user_id"
-  );
-  $statement->bindParam('user_id', $profile_id, PDO::PARAM_INT);
-  $statement->execute();
-  $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-  // Counting number of followers in database
-  $statement = $pdo->prepare('SELECT COUNT(*) FROM followers WHERE user_id = :user_id');
-  $statement->bindParam(':user_id', $profile_id, PDO::PARAM_INT);
-  $statement->execute();
-  $followers = $statement->fetch(PDO::FETCH_ASSOC);
-  $followers = $followers["COUNT(*)"];
-  if (!$followers){
-    $followers = 0;
-  }
-  // Counting number of followings in database
-  $statement = $pdo->prepare('SELECT COUNT(*) FROM followers WHERE follower_id = :user_id');
-  $statement->bindParam(':user_id', $profile_id, PDO::PARAM_INT);
-  $statement->execute();
-  $following = $statement->fetch(PDO::FETCH_ASSOC);
-  $following = $following["COUNT(*)"];
-  if (!$following){
-    $following = 0;
-  }
+  $posts = get_posts_by_id($profile_id, $pdo);
+  $followers = count_followers($profile_id, $pdo);
+  $following = count_following($profile_id, $pdo);
+ 
 }
 
 ?>
@@ -66,11 +45,11 @@ if (is_logged_in()){
         $statement->execute();
         $check_if_follow = $statement->fetch(PDO::FETCH_ASSOC);
         if ($check_if_follow):?>
-          <div class="guest-follow-button unfollow">
+          <div class="guest-follow-button guest-start-follow ">
             <a href="app/users/unfollow.php?follow_id=<?=$profile_id?>">Unfollow</a>
           </div>
         <?php else: ?>
-          <div class="guest-follow-button guest-start-follow">
+          <div class="guest-follow-button unfollow">
             <a href="app/users/follow.php?follow_id=<?=$profile_id?>">Follow</a>
           </div>
         <?php endif; ?>

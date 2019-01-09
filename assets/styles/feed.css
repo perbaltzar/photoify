@@ -24,7 +24,7 @@
   font-size: 3vw;
   color: var(--grey);
 }
-.feed-like{
+.like-button{
   height: 5vh;
   width: 5vh;
   margin-right: 1vh;
@@ -45,6 +45,9 @@
 }
 .feed-interaction-container div{
   margin-left: 1vh;
+}
+.feed-interaction-container a{
+  text-decoration: none;
 }
 .feed-description{
   font-size: 34px;

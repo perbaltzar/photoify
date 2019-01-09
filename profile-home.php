@@ -10,34 +10,20 @@ if (is_logged_in()){
   $profile_picture = $_SESSION['user']['profile_picture'];
   $id = (int)$_SESSION['user']['id'];
 
-  //Collecting posts from database
-  $statement = $pdo->prepare(
-    "SELECT * FROM posts WHERE user_id = :user_id"
-  );
-  $statement->bindParam('user_id', $id, PDO::PARAM_INT);
-  $statement->execute();
-  $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-  // die(var_dump($posts));
+  // //Collecting posts from database
+  // $statement = $pdo->prepare(
+  //   "SELECT * FROM posts WHERE user_id = :user_id"
+  // );
+  // $statement->bindParam('user_id', $id, PDO::PARAM_INT);
+  // $statement->execute();
+  // $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+  // // Reversing order so latest post is posted first
+  // $posts = array_reverse($posts);
+  $posts = get_posts_by_id($id, $pdo);
+  $followers = count_followers($id, $pdo);
+  $following = count_following($id, $pdo);
 
-  // Counting number of followers in database
-  $statement = $pdo->prepare('SELECT COUNT(*) FROM followers WHERE user_id = :user_id');
-  $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
-  $statement->execute();
-  $followers = $statement->fetch(PDO::FETCH_ASSOC);
-  $followers = $followers["COUNT(*)"];
-  if (!$followers){
-    $followers = 0;
-  }
-  // Counting number of followings in database
-  $statement = $pdo->prepare('SELECT COUNT(*) FROM followers WHERE follower_id = :user_id');
-  $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
-  $statement->execute();
-  $following = $statement->fetch(PDO::FETCH_ASSOC);
-  $following = $following["COUNT(*)"];
-
-  if (!$following){
-    $following = 0;
-  }
+  
 
 }
 
@@ -79,7 +65,9 @@ if (is_logged_in()){
 
   <div class="profile-posts">
     <?php foreach ($posts as $post): ?>
-      <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
+      <a href="post-view.php?post_id=<?=$post['id'];?>">
+        <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
+      </a>
     <?php endforeach; ?>
   </div>
 

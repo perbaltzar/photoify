@@ -5,7 +5,7 @@ declare(strict_types=1);
 require __DIR__.'/views/header.php';
 
 // Storing needed variables
-$id = $_SESSION['user']['id'];
+$id = (int) $_SESSION['user']['id'];
 
 // Collecting data from Database
 $statement = $pdo->prepare(
@@ -19,52 +19,22 @@ $statement->execute();
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 $posts = array_reverse($posts);
 
-// Counting the rows in likes table
-$statement = $pdo->prepare('SELECT COUNT(*) FROM likes');
-$statement->execute();
-$likes = $statement->fetchAll(PDO::FETCH_ASSOC);
-if (!$statement){
-  die(var_dump($pdo->errorInfo()));
-}
-
 
 ?>
 <section class="all-feed-container">
+
   <?php
   // Looping through all the posts
-  foreach ($posts as $post) :?>
-  <?php
+  foreach ($posts as $post) :
 
   // Storing variables
-  $post_id = $post['post_id'];
+  $post_id = (int)$post['post_id'];
   $poster_id = $post['user_id'];
 
-  // Counting the rows in likes table
-  $statement = $pdo->prepare('SELECT COUNT(*) FROM likes WHERE post_id = :post_id');
-  $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
-  $statement->execute();
-  $likes = $statement->fetch(PDO::FETCH_ASSOC);
-  $likes = $likes["COUNT(*)"];
-
-  // Counting the comments in comment table
-  $statement = $pdo->prepare('SELECT COUNT(*) FROM comments WHERE post_id = :post_id');
-  $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
-  $statement->execute();
-  $comments = $statement->fetch(PDO::FETCH_ASSOC);
-  $comments = $comments["COUNT(*)"];
-
-  // Calculating how long ago post was posted
+  $likes = count_likes($post_id, $pdo);
+  $comments = count_comments($post_id, $pdo);
   $ago = get_time(time()-strtotime($post['created_at']));
-
-
-
-  // Checking if it's liked by user
-  $statement = $pdo->prepare('SELECT * FROM likes
-    WHERE post_id = :post_id AND user_id = :user_id');
-  $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
-  $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
-  $statement->execute();
-  $is_liked_by_user = $statement->fetch(PDO::FETCH_ASSOC);
+  $is_liked_by_user = is_post_liked_by_user($id, $post_id, $pdo);
   ?>
 
   <div class="feed-container">
@@ -84,7 +54,7 @@ if (!$statement){
       <?php else: ?>
         <div class="feed-name-container">
           <a class="feed-avatar-link" href="profile-guest.php?profile_id=<?=$poster_id;?>"><?=$post['username'];?></a>
-          <?=$ago?> 
+          <?=$ago?>
         </div>
 
 
@@ -98,15 +68,15 @@ if (!$statement){
     <div class="feed-interaction-container">
       <div>
         <?=$likes?> likes -
-        <?=$comments?> comments
+        <a href="post-view.php?post_id=<?=$post_id;?>"><?=$comments?> comments</a>
       </div>
       <?php if ($is_liked_by_user): ?>
         <a href="app/posts/unlike.php?post_id=<?=$post_id;?>&redirect=feed.php">
-          <img class="feed-like"src="assets/icons/heart_filled.svg">
+          <img class="like-button"src="assets/icons/heart_filled.svg">
         </a>
       <?php else: ?>
       <a href="app/posts/like.php?post_id=<?=$post_id;?>&redirect=feed.php">
-        <img class="feed-like"src="assets/icons/heart.svg">
+        <img class="like-button"src="assets/icons/heart.svg">
       </a>
     <?php endif; ?>
     </div>
@@ -119,3 +89,6 @@ if (!$statement){
 require __DIR__.'/views/navbar.php';
 ?>
 </section>
+<script type="text/javascript" src="assets/scripts/like.js">
+
+    </script>
