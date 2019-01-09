@@ -9,16 +9,14 @@ require __DIR__.'/views/header.php';
    $post_id = (int)$_GET['post_id'];
 
    //Collecting data from database
-
-   $statement = $pdo->prepare('SELECT * FROM posts WHERE user_id = :user_id AND id = :post_id');
-   if (!$statement){
-     die(var_dump($pdo->errorInfo()));
+   $post = get_post_by_postid($post_id, $pdo);
+   if ($post)
+   
+   //Sends user back to feed if its not the poster
+   if ((int)$post['user_id'] !== $user_id){
+     redirect('/feed.php');
    }
-   $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-   $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
-   $statement->execute();
-   $post = $statement->fetch(PDO::FETCH_ASSOC);
-   // die(var_dump($post));
+
  }
 ?>
 
@@ -27,6 +25,7 @@ require __DIR__.'/views/header.php';
     if ($post): ?>
     <section class="edit-post-container">
       <h1 class="edit-headline">EDIT POST</h1>
+      <a href="app/posts/delete.php?post_id=<?=$post_id;?>">DELETE POST</a>
       <div class="edit-post-preview-container">
         <img class="edit-post-preview" src="assets/uploads/<?=$post['content'];?>">
       </div>

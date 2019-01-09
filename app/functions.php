@@ -145,7 +145,7 @@ function count_following(int $id, object $pdo):int
   return $following;
 }
 
-function get_posts_by_id (int $id, object $pdo): array
+function get_posts_by_userid (int $id, object $pdo): array
 {
   $statement = $pdo->prepare(
     "SELECT * FROM posts WHERE user_id = :user_id"
@@ -155,4 +155,15 @@ function get_posts_by_id (int $id, object $pdo): array
   $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
   // Reversing order so latest post is posted first
   return array_reverse($posts);
+}
+
+function get_post_by_postid (int $post_id, object $pdo): array
+{
+   $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :post_id');
+   if (!$statement){
+     die(var_dump($pdo->errorInfo()));
+   }
+   $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+   $statement->execute();
+   return $statement->fetch(PDO::FETCH_ASSOC);
 }

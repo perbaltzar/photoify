@@ -29,7 +29,7 @@ $posts = array_reverse($posts);
 
   // Storing variables
   $post_id = (int)$post['post_id'];
-  $poster_id = $post['user_id'];
+  $poster_id = (int)$post['user_id'];
 
   $likes = count_likes($post_id, $pdo);
   $comments = count_comments($post_id, $pdo);

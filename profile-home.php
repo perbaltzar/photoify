@@ -10,16 +10,8 @@ if (is_logged_in()){
   $profile_picture = $_SESSION['user']['profile_picture'];
   $id = (int)$_SESSION['user']['id'];
 
-  // //Collecting posts from database
-  // $statement = $pdo->prepare(
-  //   "SELECT * FROM posts WHERE user_id = :user_id"
-  // );
-  // $statement->bindParam('user_id', $id, PDO::PARAM_INT);
-  // $statement->execute();
-  // $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-  // // Reversing order so latest post is posted first
-  // $posts = array_reverse($posts);
-  $posts = get_posts_by_id($id, $pdo);
+
+  $posts = get_posts_by_userid($id, $pdo);
   $followers = count_followers($id, $pdo);
   $following = count_following($id, $pdo);
 

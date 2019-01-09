@@ -10,7 +10,7 @@ if (is_logged_in()){
     $profile = get_user_by_id($profile_id, $pdo);
     $user_id = (int)$_SESSION['user']['id'];
   }
-  $posts = get_posts_by_id($profile_id, $pdo);
+  $posts = get_posts_by_userid($profile_id, $pdo);
   $followers = count_followers($profile_id, $pdo);
   $following = count_following($profile_id, $pdo);
  

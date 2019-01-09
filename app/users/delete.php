@@ -7,7 +7,17 @@ require __DIR__.'/../autoload.php';
 
 if (is_logged_in()){
   $id = (int) $_SESSION['user']['id'];
-  // die(var_dump($id));
+  
+  // Deleting the users uploaded files 
+ if ($_SESSION['user']['profile_picture'] !== 'default-profile.jpg')
+ {
+   unlink(__DIR__.'/../../assets/uploads/'.$_SESSION['user']['profile_picture']);
+ }
+ $posts = get_posts_by_userid($id, $pdo);
+ foreach ($posts as $post) {
+   unlink(__DIR__.'/../../assets/uploads/'.$post['content']);
+ }
+
   // Deleting the user, comments, follows, likes and posts from the database
   $statement = $pdo->prepare('DELETE FROM users WHERE id = :id');
   if (!$statement){
