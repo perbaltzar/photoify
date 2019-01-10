@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if (is_logged_in() && isset($_GET['post_id'])){
-  $user_id = (int)$_SESSION['user']['id'];
-  $post_id = (int) $_GET['post_id'];
-  $redirect = $_GET['redirect'];
+if (is_logged_in() && isset($_POST['post_id'])){
+  $user_id = (int) $_SESSION['user']['id'];
+  $post_id = (int) $_POST['post_id'];
 
 
   // Check if like already excist in Database
@@ -15,5 +14,10 @@ if (is_logged_in() && isset($_GET['post_id'])){
   $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
   $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
   $statement->execute();
+  
+  $likes = count_likes($post_id, $pdo);
+  $likes = json_encode($likes);
+  header ('Content-Type: application/json');
+  echo $likes;
 }
-redirect("/$redirect?post_id=$post_id");
+

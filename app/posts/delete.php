@@ -10,10 +10,11 @@ if (isset($_SESSION['user'], $_GET['post_id']))
   $user_id = (int)$_SESSION['user']['id'];
 
   $post = get_post_by_postid($post_id, $pdo);
+
+  // Back End Check if user is owner of post and then deleting file
   if ((int)$post['user_id']=== $user_id){
     $path = '/../../assets/uploads/'.$post['content'];
     unlink(__DIR__.$path);
-    // unlink();
   }
   
   $statement = $pdo->prepare('DELETE FROM posts WHERE user_id = :user_id AND id = :post_id');

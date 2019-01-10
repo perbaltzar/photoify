@@ -20,12 +20,9 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     $created_at = date("Y-m-d");
 
     // Checking database to see if email already excist
-    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email;');
-    $statement->bindParam(':email', $email, PDO::PARAM_STR);
-    $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
-    if ($user){
-      $_SESSION['error'] = 'Email already excist';
+    $user = get_user_by_email($email, $pdo);
+    if (!empty($user)){
+      $_SESSION['error'] = 'Email already exist';
       redirect('/register.php');
     }
 
@@ -46,14 +43,8 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
     $statement->execute();
 
-    // Collecting the data from database to keep new user logged in.
-    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email;');
-    $statement->bindParam(':email', $email, PDO::PARAM_STR);
-    $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
-
     // Storing userinfo in SESSION-variable
-    $_SESSION['user'] = $user;
+    $_SESSION['user'] = get_user_by_email($email, $pdo);
     redirect('/feed.php');
   }else{
     //PASSWORDS DOESN'T MATCH

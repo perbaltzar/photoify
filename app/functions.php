@@ -167,3 +167,15 @@ function get_post_by_postid (int $post_id, object $pdo): array
    $statement->execute();
    return $statement->fetch(PDO::FETCH_ASSOC);
 }
+
+function get_user_by_email(string $email, object $pdo): array
+{
+    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email;');
+    $statement->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($user){
+      return $user;
+    }
+    return $user = [];
+}

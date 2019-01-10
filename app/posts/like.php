@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if (is_logged_in() && isset($_GET['post_id'])){
+if (is_logged_in() && isset($_POST['post_id'])){
   $user_id = (int)$_SESSION['user']['id'];
   $created_at = date("Y-m-d");
-  $post_id = (int) $_GET['post_id'];
-  $redirect = $_GET['redirect'];
+  $post_id = (int) $_POST['post_id'];
 
-
-  // Check if like allready excist in Database
+  // Kanske ganska onödig numera. 
+  // Check if like already excist in Database
   $statement = $pdo->prepare('SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id');
   $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
   $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -26,6 +25,10 @@ if (is_logged_in() && isset($_GET['post_id'])){
       $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
       $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
       $statement->execute();
-  }
+    }
+    $likes = count_likes($post_id, $pdo);
+    $likes = json_encode($likes);
+    header ('Content-Type: application/json');
+    echo $likes;
 }
-redirect("/$redirect?post_id=$post_id");
+

@@ -62,11 +62,11 @@ if (is_logged_in() && isset($_GET['post_id'])){
         </div>
         <?php if ($is_liked_by_user): ?>
           <a href="app/posts/unlike.php?post_id=<?=$post_id;?>&redirect=feed.php">
-            <img class="like-button"src="assets/icons/heart_filled.svg">
+            <img class="like-button-img"src="assets/icons/heart_filled.svg">
           </a>
         <?php else: ?>
           <a href="app/posts/like.php?post_id=<?=$post_id;?>&redirect=feed.php">
-            <img class="like-button"src="assets/icons/heart.svg">
+            <img class="like-button-img"src="assets/icons/heart.svg">
           </a>
         <?php endif; ?>
       </div>

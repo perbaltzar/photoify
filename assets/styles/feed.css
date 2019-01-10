@@ -24,7 +24,7 @@
   font-size: 3vw;
   color: var(--grey);
 }
-.like-button{
+.like-button-img{
   height: 5vh;
   width: 5vh;
   margin-right: 1vh;
@@ -57,4 +57,7 @@
   height: 5vh;
   width: 5vh;
   margin-left: 0vw;
+}
+.hidden{
+  display: none;
 }

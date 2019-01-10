@@ -34,7 +34,9 @@ $posts = array_reverse($posts);
   $likes = count_likes($post_id, $pdo);
   $comments = count_comments($post_id, $pdo);
   $ago = get_time(time()-strtotime($post['created_at']));
+  // die(var_dump($id, $post_id));
   $is_liked_by_user = is_post_liked_by_user($id, $post_id, $pdo);
+ 
   ?>
 
   <div class="feed-container">
@@ -67,18 +69,17 @@ $posts = array_reverse($posts);
     </div>
     <div class="feed-interaction-container">
       <div>
-        <?=$likes?> likes -
+        <p class="likes-post<?=$post_id?>"><?=$likes?></p> likes -
         <a href="post-view.php?post_id=<?=$post_id;?>"><?=$comments?> comments</a>
       </div>
-      <?php if ($is_liked_by_user): ?>
-        <a href="app/posts/unlike.php?post_id=<?=$post_id;?>&redirect=feed.php">
-          <img class="like-button"src="assets/icons/heart_filled.svg">
-        </a>
-      <?php else: ?>
-      <a href="app/posts/like.php?post_id=<?=$post_id;?>&redirect=feed.php">
-        <img class="like-button"src="assets/icons/heart.svg">
-      </a>
-    <?php endif; ?>
+        <form method="post" class="like-button-form" >
+          <input type="hidden" name="post_id" value="<?= $post_id ?>" />
+          <input type="hidden" name="action" value="<?= $is_liked_by_user ? 'unlike' : 'like' ?>" />
+          <button data-id="<?=$post_id?>" class="like-button" type="submit">
+            <img class="like-button-<?=$post_id?> like-button-img <?= $is_liked_by_user ? '' : 'hidden' ?>" src="assets/icons/heart_filled.svg">
+            <img class="like-button-<?=$post_id?> like-button-img <?= $is_liked_by_user ? 'hidden' : '' ?>" src="assets/icons/heart.svg">
+          </button>
+      </form>
     </div>
     <div class="feed-description">
       <p><?=$post['description'];?></p>
