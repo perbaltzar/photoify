@@ -21,6 +21,7 @@ likeForms.forEach((likeForm) => {
                 .then(json => {
                     let likes = document.querySelector(`.likes-post${likeForm[0].value}`);
                     likes.innerText = json;
+                    likes.innerText += " likes";
                     likeForm[1].value = 'unlike';
                 }
                 )
@@ -35,6 +36,7 @@ likeForms.forEach((likeForm) => {
                 .then(json => {
                     let likes = document.querySelector(`.likes-post${likeForm[0].value}`);
                     likes.innerText = json;
+                    likes.innerText += " likes";
                     likeForm[1].value = 'like';
                 });
         }

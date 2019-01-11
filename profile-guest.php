@@ -24,10 +24,12 @@ if (is_logged_in()){
       <h5 class="profile-headline"><?= $profile['username']; ?></h5>
       <h6 class="profile-sub-headline"><?= $profile['first_name']." ".$profile['last_name'];?></h6>
     </div>
-    <div class="guest-profile-followers">
-      <h5 class="profile-headline"><?=$followers?></h5>
-      <h6 class="profile-sub-headline">Followers</h6>
-    </div>
+    <a href="followers.php?profile_id=<?= $profile_id ?>">
+      <div class="guest-profile-followers">
+        <h5 class="profile-headline"><?=$followers?></h5>
+        <h6 class="profile-sub-headline">Followers</h6>
+      </div>
+    </a>
     <div class="guest-profile-followers">
       <h5 class="profile-headline"><?=$following?></h5>
       <h6 class="profile-sub-headline">Following</h6>

@@ -16,16 +16,14 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Error messages
 * Delete pictures from files system when deleted
 * Not able to follow yourself.
-### FRONT END
 
+### FRONT END
 * Counting characters in biography and post description
 * Cropping posts and profile pictures
 * Error messages
-* Make an edit menu for post like on your profile
-
-### DOING
 
 ### DONE
+* Make an edit menu for post like on you    r profile
 * Make a graphic structure
 * Folder structure
 * Database
@@ -46,11 +44,10 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * As a user I should be able to create an account.
 * As a user I should be able to login.
 * As a user I should be able to logout.
-* Change folder structure for picture, folder in assets or root folder and without
-pathway, only file name.
+* Change folder structure for picture, folder in assets or root folder and without pathway, only file name.
 * Preview in uploads.
 
-### CREATOR
+### CREATORx
 [Per Baltzar](https://github.com/perbaltzar)
 
 ### TESTERS

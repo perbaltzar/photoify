@@ -179,3 +179,8 @@ function get_user_by_email(string $email, object $pdo): array
     }
     return $user = [];
 }
+
+function sort_by_username(array $a, array $b) 
+{
+  return strcmp($a['username'], $b['username']);
+}

@@ -24,17 +24,21 @@ if (is_logged_in()){
 <section class="profile-container">
   <div class="profile-username-container">
     <div class="profile-username">
-      <h5 class="profile-headline"><?= $_SESSION['user']['username']; ?></h5>
-      <h6 class="profile-sub-headline"><?= $_SESSION['user']['first_name']." ".$_SESSION['user']['last_name'];?></h6>
+      <h5 class="profile-headline"><?= $username ?></h5>
+      <h6 class="profile-sub-headline"><?= $name;?></h6>
     </div>
-    <div class="profile-followers">
-      <h5 class="profile-headline"><?=$followers?></h5>
-      <h6 class="profile-sub-headline">Followers</h6>
-    </div>
-    <div class="profile-followers">
-      <h5 class="profile-headline"><?=$following?></h5>
-      <h6 class="profile-sub-headline">Following</h6>
-    </div>
+    <a href="followers.php?profile_id=<?= $id ?>">
+      <div class="profile-followers">
+        <h5 class="profile-headline"><?=$followers?></h5>
+        <h6 class="profile-sub-headline">Followers</h6>
+      </div>
+    </a>
+    <a href="following.php?profile_id=<?= $id ?>">
+      <div class="profile-followers">
+        <h5 class="profile-headline"><?=$following?></h5>
+        <h6 class="profile-sub-headline">Following</h6>
+      </div>
+    </a>
     <div class="profile-edit">
       <img class="profile-edit-icon" src="assets/icons/edit.svg" alt="">
     </div>
@@ -49,10 +53,10 @@ if (is_logged_in()){
     </div>
   </div>
   <div class="profile-picture-container">
-    <img class="profile-picture" src="assets/uploads/<?=$_SESSION['user']['profile_picture'];?>">
+    <img class="profile-picture" src="assets/uploads/<?= $profile_picture ;?>">
   </div>
   <div class="profile-biography">
-    <?= $_SESSION['user']['biography']; ?>
+    <?= $biography; ?>
   </div>
 
   <div class="profile-posts">
