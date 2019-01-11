@@ -184,3 +184,68 @@ function sort_by_username(array $a, array $b)
 {
   return strcmp($a['username'], $b['username']);
 }
+
+function search_name($users, $search): array 
+{
+  $ids = [];
+  
+  $search_lenght = strlen($search);
+  $search = strtolower($search);
+  foreach ($users as $user) 
+  {
+    $name_lenght = strlen($user['username']);
+    for ($i=0; $i < $name_lenght ; $i++) 
+    {
+      $part_name = strtolower((substr($user['username'], $i, $search_lenght)));
+      if ($part_name === $search)
+      {
+        $ids[] = [
+          'id' => $user['id'], 
+          'username' => $user['username'], 
+          'profile_picture' => $user['profile_picture']
+        ];
+        break;
+      }
+    }
+
+    if (!in_array($user['id'], $ids))
+    {
+      $name_lenght = strlen($user['first_name']);
+      for ($i=0; $i < $name_lenght ; $i++) 
+      {
+        $part_name = strtolower((substr($user['first_name'], $i, $search_lenght)));
+        if ($part_name === $search)
+        {
+          $ids[] = [
+          'id' => $user['id'], 
+          'username' => $user['username'], 
+          'profile_picture' => $user['profile_picture']
+        ];
+          break;
+        }
+      }
+    }
+    if (!in_array($user['id'], $ids))
+    {
+      $name_lenght = strlen($user['last_name']);
+      for ($i=0; $i < $name_lenght ; $i++) 
+      {
+        $part_name = strtolower((substr($user['last_name'], $i, $search_lenght)));
+        if ($part_name === $search)
+        {
+          $ids[] = [
+          'id' => $user['id'], 
+          'username' => $user['username'], 
+          'profile_picture' => $user['profile_picture']
+        ];
+          break;
+        }
+      }
+    }
+
+
+
+
+  }
+  return $ids;
+}

@@ -1,0 +1,25 @@
+.search-form {
+  padding-top: 2vh;
+  height: 6vh;
+  font-size: 2.5vh;
+}
+
+.search-bar{
+     display: flex;
+     flex-flow: column;
+     align-items: center;
+     padding-top: 2vh;
+}
+.search-input {
+  height: 6vh;
+  font-size: 2.5vh;
+  width: 85vw;
+  border: 1px solid black;
+  padding-left: 2vw;
+}
+.search-p{
+    font-size: 2.5vh;
+}
+.search-results{
+  margin-top: 2vh;
+}
