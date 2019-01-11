@@ -6,7 +6,7 @@
   border-radius: 50%;
   width: 9vh;
   height: 9vh;
-  margin: 1vw 3vw;
+  margin: 1vw 0 1vw 3vw;
 }
 .comment-container{
   display: flex;
@@ -16,6 +16,7 @@
 }
 .comment-username{
   font-weight: bold;
+  margin-left: 2vw;
 }
 .comment-text{
   width: 90vw;

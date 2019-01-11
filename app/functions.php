@@ -188,7 +188,6 @@ function sort_by_username(array $a, array $b)
 function search_name($users, $search): array 
 {
   $ids = [];
-  
   $search_lenght = strlen($search);
   $search = strtolower($search);
   foreach ($users as $user) 
@@ -199,11 +198,8 @@ function search_name($users, $search): array
       $part_name = strtolower((substr($user['username'], $i, $search_lenght)));
       if ($part_name === $search)
       {
-        $ids[] = [
-          'id' => $user['id'], 
-          'username' => $user['username'], 
-          'profile_picture' => $user['profile_picture']
-        ];
+          $ids[] = $user['id'];
+           
         break;
       }
     }
@@ -216,11 +212,7 @@ function search_name($users, $search): array
         $part_name = strtolower((substr($user['first_name'], $i, $search_lenght)));
         if ($part_name === $search)
         {
-          $ids[] = [
-          'id' => $user['id'], 
-          'username' => $user['username'], 
-          'profile_picture' => $user['profile_picture']
-        ];
+          $ids[] = $user['id'];
           break;
         }
       }
@@ -233,11 +225,7 @@ function search_name($users, $search): array
         $part_name = strtolower((substr($user['last_name'], $i, $search_lenght)));
         if ($part_name === $search)
         {
-          $ids[] = [
-          'id' => $user['id'], 
-          'username' => $user['username'], 
-          'profile_picture' => $user['profile_picture']
-        ];
+          $ids[] = $user['id'];
           break;
         }
       }
@@ -247,5 +235,7 @@ function search_name($users, $search): array
 
 
   }
+
+  
   return $ids;
 }

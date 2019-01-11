@@ -13,19 +13,28 @@ searchForm.addEventListener('keyup', ()=>{
         .then(response => response.json())
         .then(json => {
             results.innerHTML = '';
-            json.forEach(user => {
-                results.innerHTML += `
-                <a href="profile-guest.php?profile_id=${user.id}" >
-                    <div class="comment-container">
-                        <img class="comment-avatar" src="/assets/uploads/${user.profile_picture}">
-                        <div>
-                            <p class="comment-username">${user.username}</p>
+            if (json === 'No users found')
+            {
+                results.innerHTML = `<div class="comment-container">
+                                        <div>
+                                            <p class="comment-username">No users found</p>
+                                        </div>
+                                    </div>`
+            }else
+            {
+                json.forEach(user => {
+                    results.innerHTML += `
+                    <a href="profile-guest.php?profile_id=${user.id}" >
+                        <div class="comment-container">
+                            <img class="comment-avatar" src="/assets/uploads/${user.profile_picture}">
+                            <div>
+                                <p class="comment-username">${user.username}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-                `;
-            });
-            console.log(json);
+                    </a>
+                    `;
+                });
+            }
         })
     }
 })
