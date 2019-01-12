@@ -23,6 +23,7 @@
   height: 10vh;
   font-size: 2vh;
   border: 1px solid black;
+  
 }
 .comment-button{
   align-self: flex-end;
@@ -43,4 +44,7 @@
   flex-flow: column;
   justify-content: center;
   margin: 3vh 0;
+}
+.comment{
+  margin-left: 2vw;
 }

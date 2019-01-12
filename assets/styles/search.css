@@ -24,3 +24,9 @@
   margin-top: 2vh;
   height: 78vh;
 }
+.search-found-users{
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  height: 78vh;
+}
