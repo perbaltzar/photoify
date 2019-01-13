@@ -57,7 +57,7 @@ if (is_logged_in()){
         <?php endif; ?>
 
         <div class="guest-follow-button">
-          <a href="">Message</a>
+          <a href="message.php?profile_id=<?=$profile_id?>">Message</a>
         </div>
       </div>
     </div>

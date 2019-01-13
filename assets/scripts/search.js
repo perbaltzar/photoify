@@ -15,9 +15,9 @@ searchForm.addEventListener('keyup', ()=>{
             results.innerHTML = '';
             if (json === 'No users found')
             {
-                results.innerHTML = `<div class="comment-container">
+                results.innerHTML = `<div class="search-found-users">
                                         <div>
-                                            <p class="comment-username">No users found</p>
+                                            <p class="search-username">No users found</p>
                                         </div>
                                     </div>`
             }else
@@ -25,10 +25,11 @@ searchForm.addEventListener('keyup', ()=>{
                 json.forEach(user => {
                     results.innerHTML += `
                     <a href="profile-guest.php?profile_id=${user.id}" >
-                        <div class="comment-container">
+                        <div class="search-found-users">
                             <img class="comment-avatar" src="/assets/uploads/${user.profile_picture}">
                             <div>
-                                <p class="comment-username">${user.username}</p>
+                                <p class="search-username">${user.username}</p>
+                                <p class="search-name">${user.first_name} ${user.last_name}</p>
                             </div>
                         </div>
                     </a>
@@ -40,15 +41,3 @@ searchForm.addEventListener('keyup', ()=>{
 })
 
 
-
-
-/*
-<a href="profile-guest.php?profile_id=<?=$follower['following_id'];?>" >
-  <div class="comment-container" >
-    <img class="comment-avatar" src="<?='/assets/uploads/'.$follower['profile_picture']?>" >
-    <div class="" >
-        <p class = "comment-username"> <?=$follower['username'];?> </p> 
-    </div> 
-</div> 
-</a>
-*/
