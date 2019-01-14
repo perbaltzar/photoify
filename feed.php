@@ -42,7 +42,7 @@ $posts = array_reverse($posts);
   <div class="feed-container">
     <div class="feed-avatar-container">
       <img class="feed-avatar" src="<?='/assets/uploads/'.$post['profile_picture']?>">
-      <?php if (is_owner($poster_id, $id)): ?>
+      <?php if (is_owner_of_post($poster_id, $id)): ?>
         <div class="feed-name-container">
           <a class="feed-avatar-link" href="profile-home.php"><?=$post['username'];?></a>
           <?=$ago?>

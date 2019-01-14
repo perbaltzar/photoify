@@ -3,18 +3,23 @@
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
+if (!is_logged_in()){
+    redirect('/');
+}
 
-if (isset($_POST['message'], $_POST['profile_id'])){
+
+if (isset($_POST['message'], $_POST['profile_id'], $_POST['conversation_id'])){
     $message = $_POST['message'];
+    $conversation_id = (int) $_POST['conversation_id'];
     $profile_id = (int) $_POST['profile_id'];
     $id = (int) $_SESSION['user']['id'];
     $created_at = date("Y-m-d");
 
 
-    $statement = $pdo->prepare('INSERT INTO messages (to_id, from_id, content, created_at) 
-    VALUES(:to_id, :id, :content, :created_at)');
-    $statement->bindParam(':to_id', $profile_id, PDO::PARAM_INT);
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement = $pdo->prepare('INSERT INTO messages (sender_id, conversation_id, content, created_at) 
+    VALUES(:sender_id, :conversation_id, :content, :created_at)');
+    $statement->bindParam(':sender_id', $id, PDO::PARAM_INT);
+    $statement->bindParam(':conversation_id', $conversation_id, PDO::PARAM_INT);
     $statement->bindParam(':content', $message, PDO::PARAM_STR);
     $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
     $statement->execute();

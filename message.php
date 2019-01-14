@@ -7,23 +7,117 @@ require __DIR__.'/views/header.php';
 if (isset($_GET['profile_id']) && is_logged_in()){
     $user_id = (int)$_SESSION['user']['id'];
     $profile_id = (int)$_GET['profile_id'];
-
-    $statement = $pdo->prepare(
-        'SELECT m.to_id, m.from_id, m.content, m.created_at, u.username, u.profile_picture 
-        FROM messages m INNER JOIN users u 
-        ON m.to_id = u.id 
-        WHERE m.to_id = :id AND m.from_id = :profile_id OR m.to_id = :profile_id AND m.from_id = :id'
-        );
-    if (!$statement){
-        die(var_dump($pdo->errorInfo()));
+    $created_at = date("Y-m-d");
+    
+    
+    // Check if conversation exist
+    $statement = $pdo->prepare('SELECT conversation_id FROM conversation_members 
+                                WHERE user_id = :user_id');
+    $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $statement->execute();
+    $conversation_ids = $statement->fetchAll(PDO::FETCH_ASSOC);
+    // die(var_dump($conversation_ids));
+    foreach ($conversation_ids as $conversation_id) 
+    {
+        $statement = $pdo->prepare('SELECT user_id FROM conversation_members 
+                                    WHERE conversation_id = :conversation_id AND user_id != :user_id');
+        $statement->bindParam(':conversation_id', $conversation_id['conversation_id'], PDO::PARAM_INT);
+        $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $statement->execute();
+        $profile_id_check = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        // print_r($profile_id_check);
+        
+        // print_r($profile_id);
+        if ((int) $profile_id_check['user_id'] === $profile_id)
+        {
+            $conversation_id = $conversation_id['conversation_id'];
+            $conversation_exist = true;
+            // echo 'hej';
+            break;
+        }else{
+            $conversation_exist = false;
+        }
     }
-    $statement->bindParam(':id', $user_id, PDO::PARAM_INT);
-    $statement->bindParam(':profile_id', $profile_id, PDO::PARAM_INT);
+
+    // die(var_dump($conversation_exist, $profile_id_check));
+    if (!$conversation_exist)
+    {
+        // CREATING A CONVERSTION IF NOT EXISTS
+        $statement = $pdo->prepare('INSERT INTO conversations(created_at) VALUES (:created_at)');
+        $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
+        
+        $statement->execute();
+        $conversation_id = (int) $pdo->lastInsertId();
+        
+        // Adding active user in members table
+        $statement = $pdo->prepare('INSERT INTO conversation_members (conversation_id, user_id) 
+                                VALUES (:conversation_id, :user_id)');
+        $statement->bindParam(':conversation_id', $conversation_id, PDO::PARAM_INT);
+        $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $statement->execute();
+        
+        // Adding profile user in members table
+        $statement = $pdo->prepare('INSERT INTO conversation_members (conversation_id, user_id) 
+                                    VALUES (:conversation_id, :profile_id)');
+        $statement->bindParam(':conversation_id', $conversation_id, PDO::PARAM_INT);
+        $statement->bindParam(':profile_id', $profile_id, PDO::PARAM_INT);
+        $statement->execute();
+    }
+    
+    
+    
+
+
+
+
+    // $statement = $pdo->prepare('SELECT * FROM conversations c 
+    // INNER JOIN conversation_members cm WHERE cm.user_id = :id');
+    // $statement->bindParam(':id', $user_id, PDO::PARAM_INT);
+    // $statement->execute();
+    // $conversations = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    // foreach ($conversations as $conversation) {
+    //     $statement = $pdo->prepare('SELECT * FROM conversation_members 
+    //     WHERE conversation_id = :conversation_id');
+    //     $statement->bindParam(':profile_id', $profile_id, PDO::PARAM_INT);
+    //     $statement->execute();
+    //     $members = $statement->fetchAll(PDO::FETCH_ASSOC);
+    //     if ($members['id'] === $profile_id)
+    // }
+    
+    
+    
+    // CHECK IF CONVERSATION EXCIST BETWEEN USER AND PROFILE
+    // START OR DONT START A CONVERSATION
+
+    // GET MESSAGES FROM CONVERSATION
+    $statement = $pdo->prepare('SELECT m.sender_id, m.content, u.username, u.profile_picture FROM messages m 
+        INNER JOIN users u ON m.sender_id = u.id WHERE conversation_id = :conversation_id');
+        if (!$statement){
+            die(var_dump($pdo->errorInfo()));
+        }
+    $statement->bindParam(':conversation_id', $conversation_id, PDO::PARAM_INT);
     $statement->execute();
     $messages = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+    // $statement = $pdo->prepare(
+    //     'SELECT m.to_id, m.from_id, m.content, m.created_at, u.username, u.profile_picture 
+    //     FROM messages m INNER JOIN users u 
+    //     ON m.to_id = u.id 
+    //     WHERE m.to_id = :id AND m.from_id = :profile_id OR m.to_id = :profile_id AND m.from_id = :id'
+    //     );
+    // if (!$statement){
+    //     die(var_dump($pdo->errorInfo()));
+    // }
+    // $statement->bindParam(':id', $user_id, PDO::PARAM_INT);
+    // $statement->bindParam(':profile_id', $profile_id, PDO::PARAM_INT);
+    // $statement->execute();
+    // $messages = $statement->fetchAll(PDO::FETCH_ASSOC);
    
     $to_user= get_user_by_id($profile_id, $pdo);
-
+    // die(var_dump($messages, $conversation_id));
 }
 
 
@@ -43,7 +137,7 @@ if (isset($_GET['profile_id']) && is_logged_in()){
         <?php
         foreach ($messages as $message) : 
             //  die(var_dump($message));
-            if ((int) $message['from_id'] === $user_id):?>
+            if ((int) $message['sender_id'] === $user_id):?>
                 <div class="own-message-container">
                     <p class="message">
                         <?=$message['content'];?>
@@ -64,15 +158,13 @@ if (isset($_GET['profile_id']) && is_logged_in()){
     <div class="new-message-container">
         <form class="add-comment-form" action="app/users/message.php" method="post">
             <input type="hidden" name="profile_id" value="<?= $profile_id ?>" />
+            <input type="hidden" name="conversation_id" value="<?= $conversation_id ?>" />
             <textarea class="comment-text" name="message" rows="" cols="" required></textarea>
           <button class="comment-button" type="submit" name="button">Send</button>
         </form>
         
     </div>
 </section>
-
 <?php
 require __DIR__.'/views/navbar.php';
 ?>
-</body>
-</html>

@@ -16,6 +16,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Error messages
 * Delete pictures from files system when deleted
 * Not able to follow yourself.
+* Look at saftey, logged in and owner of post
 
 ### FRONT END
 * Counting characters in biography and post description

@@ -31,7 +31,7 @@ if (is_logged_in() && isset($_GET['post_id'])){
     <div class="feed-container">
       <div class="feed-avatar-container">
         <img class="feed-avatar" src="<?='/assets/uploads/'.$post['profile_picture']?>">
-        <?php if (is_owner($post_id, $id)): ?>
+        <?php if (is_owner_of_post($post_id, $id)): ?>
           <div class="feed-name-container">
             <a class="feed-avatar-link" href="profile-home.php"><?=$post['username'];?></a>
             <?=$ago?> days ago

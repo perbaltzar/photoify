@@ -6,13 +6,13 @@
       <div class="edit-label">
         <label for="firstName">First Name</label>
       </div>
-      <input class="edit-input" type="text" name="firstName" value="<?= $_SESSION['user']['first_name'];?>" required>
+      <input class="edit-input" type="text" name="first_name" value="<?= $_SESSION['user']['first_name'];?>" required>
     </div>
     <div class="edit-div">
       <div class="edit-label">
         <label for="lastName">Last Name</label>
       </div>
-      <input class="edit-input" type="text" name="lastName" value="<?= $_SESSION['user']['last_name'];?>"placeholder="Last Name" required>
+      <input class="edit-input" type="text" name="last_name" value="<?= $_SESSION['user']['last_name'];?>"placeholder="Last Name" required>
     </div>
     <div class="edit-div">
       <div class="edit-label">

@@ -34,7 +34,7 @@ function get_user_by_id(int $id, object $pdo): array
  * @param  id of user
  * @return bool         True or false
  */
-function is_owner($post, $user): bool
+function is_owner_of_post($post, $user): bool
 {
   return $post === $user;
 }
@@ -185,6 +185,8 @@ function sort_by_username(array $a, array $b)
   return strcmp($a['username'], $b['username']);
 }
 
+
+
 function search_name($users, $search): array 
 {
   $ids = [];
@@ -235,7 +237,7 @@ function search_name($users, $search): array
 
 
   }
-
+  
   
   return $ids;
 }

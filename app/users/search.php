@@ -12,6 +12,7 @@ require __DIR__.'/../autoload.php';
     
     $ids = search_name($users, $search);   
     
+   
     foreach ($ids as $id)
     {
         $statement = $pdo->prepare("SELECT * FROM users WHERE id = :id");
