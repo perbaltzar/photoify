@@ -25,6 +25,4 @@ if (isset($_POST['email'], $_POST['password'])){
       $_SESSION['error'] = 'Wrong Password';
       redirect('/');
     }
-
-
 }

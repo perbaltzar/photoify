@@ -43,7 +43,6 @@
   font-size: 3vh;
 }
 .feed-comments-and-likes{
-  padding-left: 1vh;
   color: var(--grey);
 }
 .feed-comments-and-likes-container{
@@ -57,7 +56,6 @@
   text-decoration: none;
 }
 .feed-description{
-  /* font-size: 34px; */
   padding: 0 1vh 10vh 1vh;
 }
 .feed-edit{

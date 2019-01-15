@@ -16,6 +16,12 @@ require __DIR__.'/functions.php';
 
 // Fetch the global configuration array.
 $config = require __DIR__.'/config.php';
-// die(var_dump($config));
+
 // Setup the database connection.
 $pdo = new PDO($config['database_path']);
+
+// Reseting Session Error so message don't stick
+if (isset($_SESSION['error']))
+{
+    unset($_SESSION['error']);
+}

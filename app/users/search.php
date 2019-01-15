@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
     
+if (!is_logged_in())
+{
+  $_SESSION['error'] = 'You\'re Not Logged In';
+  redirect('/');
+}
+if (isset($_POST['search']))
+{
     $search = $_POST['search'];
     $statement = $pdo->prepare("SELECT * FROM users");
     $statement->execute();
@@ -27,28 +34,5 @@ require __DIR__.'/../autoload.php';
 
     $results = json_encode($results);
     header ('Content-Type: application/json');
-    echo $results;
-
-/*
-
-
-if (isset($_POST['search'])){
-
-    // $search = $_POST['search'];
-    $statement = $pdo->prepare("SELECT * FROM users");
-    $statement->execute();
-    $users = $statement->fetch(PDO::FETCH_ASSOC);
-
-    //CHANGE CASE
-    
-    //GO TROUGH USERNAME, NAME, FIRSTNAME
-    
-    $ids = search_name($users, $search);    
-    
-    die(var_dump($ids));
-
-    $ids = json_encode($ids);
-    header ('Content-Type: application/json');
-    echo $ids;
+    echo $results;   
 }
-*/

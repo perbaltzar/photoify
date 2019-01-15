@@ -3,12 +3,15 @@
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
-if (!is_logged_in()){
-    redirect('/');
+// Check if user is logged in
+if (!is_logged_in())
+{
+  $_SESSION['error'] = 'You\'re Not Logged In';
+  redirect('/');
 }
 
-
-if (isset($_POST['message'], $_POST['profile_id'], $_POST['conversation_id'])){
+if (isset($_POST['message'], $_POST['profile_id'], $_POST['conversation_id']))
+{
     $message = $_POST['message'];
     $conversation_id = (int) $_POST['conversation_id'];
     $profile_id = (int) $_POST['profile_id'];

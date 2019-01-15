@@ -4,8 +4,14 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
+// Check if user is logged in
+if (!is_logged_in())
+{
+  $_SESSION['error'] = 'You\'re Not Logged In';
+  redirect('/');
+}
 
-if (is_logged_in()){
+// IF PASSWORD CHECK!
   $id = (int) $_SESSION['user']['id'];
   
   // Deleting the users uploaded files 
@@ -42,7 +48,8 @@ if (is_logged_in()){
   $statement->bindParam(':id', $id, PDO::PARAM_INT);
   $statement->execute();
 
-}
+
 
 session_destroy();
 redirect('/');
+
