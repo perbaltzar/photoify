@@ -37,20 +37,27 @@
   text-decoration: none;
 }
 .feed-interaction-container{
-  color: var(--grey);
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  display: flex;
   font-size: 3vh;
+}
+.feed-comments-and-likes{
+  padding-left: 1vh;
+  color: var(--grey);
+}
+.feed-comments-and-likes-container{
+  display: flex;
 }
 .feed-interaction-container div{
   margin-left: 1vh;
+  color: var(--grey);
 }
 .feed-interaction-container a{
   text-decoration: none;
 }
 .feed-description{
-  font-size: 34px;
+  /* font-size: 34px; */
   padding: 0 1vh 10vh 1vh;
 }
 .feed-edit{

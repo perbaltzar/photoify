@@ -28,8 +28,10 @@ if (is_logged_in()){
         $statement->execute();
         $conversations[] = $statement->fetch(PDO::FETCH_ASSOC);
     }
-
-    // die(var_dump($conversations));
+    //Flipping array so latest is on top
+    $conversations = array_reverse($conversations);
+}else{
+    redirect ('/');
 }
 
 
@@ -37,21 +39,23 @@ if (is_logged_in()){
 
 ?>
 
-<section>
-    <h1 class="edit-headline">MESSAGES</h1>
-    <div>
-        <?php
-        foreach ($conversations as $conversation) : ?>   
-            <a href="message.php?profile_id=<?=$conversation['id'];?>">
-                <div class="comment-container">
-                    <img class="comment-avatar" src="/assets/uploads/<?=$conversation['profile_picture'];?>">
-                    <div class="">
-                    <p class="comment-username"><?=$conversation['username'];?></p>
+<section class="message-section">
+    
+        <h1 class="edit-headline">MESSAGES</h1>
+        <div class="conversations-container">
+            <?php
+            foreach ($conversations as $conversation) : ?>   
+                <a href="message.php?profile_id=<?=$conversation['id'];?>">
+                    <div class="comment-container">
+                        <img class="comment-avatar" src="/assets/uploads/<?=$conversation['profile_picture'];?>">
+                        <div class="">
+                        <p class="comment-username"><?=$conversation['username'];?></p>
+                    </div>
                 </div>
-            </div>
-            </a>
-        <?php endforeach;?>
-    </div>
+                </a>
+            <?php endforeach;?>
+        </div>
+    
 </section>
 
 <?php

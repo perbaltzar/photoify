@@ -68,9 +68,9 @@ $posts = array_reverse($posts);
       </a>
     </div>
     <div class="feed-interaction-container">
-      <div>
-        <p class="likes-post<?=$post_id?>"><?=$likes?> likes </p> -
-        <a href="post-view.php?post_id=<?=$post_id;?>"><?=$comments?> comments</a>
+      <div class="feed-comments-and-likes-container">
+        <p class="likes-post<?=$post_id?> feed-comments-and-likes"><?=$likes?> likes </p> 
+        <a href="post-view.php?post_id=<?=$post_id;?>"><p class="feed-comments-and-likes"> - <?=$comments?> comments</p></a>
       </div>
         <form method="post" class="like-button-form" >
           <input type="hidden" name="post_id" value="<?= $post_id ?>" />

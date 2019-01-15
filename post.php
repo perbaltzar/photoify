@@ -4,12 +4,15 @@ declare(strict_types=1);
 require __DIR__.'/views/header.php';
 ?>
 <section class="edit-section">
-    <h1 class="edit-headline">POST A PICTURE</h1>
+    <!-- <h1 class="edit-headline">POST A PICTURE</h1> -->
     <div class="post-container">
         <form class="post-form" method="post" enctype="multipart/form-data" action="app/posts/post.php">
-          <div class="post-upload-container">
-            <label for="uploadFiles">Choose a picture to upload</label>
-            <input class="post-file" type="file" accept="image/*" name="content" required>
+          <div class="post-file-label-container">
+            Choose a file to upload
+            <div class="post-upload-container">
+              <label class="post-file-label" for="imgs">File</label>
+              <input class="post-file" type="file" accept="image/*" name="content" id="imgs" required>
+            </div>
           </div>
           <div class="post-preview-container">
             <img class="post-preview" src="assets/images/preview.jpg" alt="">

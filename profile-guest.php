@@ -66,7 +66,9 @@ if (is_logged_in()){
     </div>
     <div class="profile-posts">
       <?php foreach ($posts as $post): ?>
-        <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
+        <a href="post-view.php?post_id=<?=$post['id'];?>">
+          <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
+        </a>
       <?php endforeach; ?>
     </div>
   </div>

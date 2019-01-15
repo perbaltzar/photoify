@@ -33,7 +33,6 @@ if (isset($_GET['profile_id']) && is_logged_in()){
         {
             $conversation_id = $conversation_id['conversation_id'];
             $conversation_exist = true;
-            // echo 'hej';
             break;
         }else{
             $conversation_exist = false;
@@ -65,56 +64,15 @@ if (isset($_GET['profile_id']) && is_logged_in()){
         $statement->execute();
     }
     
-    
-    
-
-
-
-
-    // $statement = $pdo->prepare('SELECT * FROM conversations c 
-    // INNER JOIN conversation_members cm WHERE cm.user_id = :id');
-    // $statement->bindParam(':id', $user_id, PDO::PARAM_INT);
-    // $statement->execute();
-    // $conversations = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    // foreach ($conversations as $conversation) {
-    //     $statement = $pdo->prepare('SELECT * FROM conversation_members 
-    //     WHERE conversation_id = :conversation_id');
-    //     $statement->bindParam(':profile_id', $profile_id, PDO::PARAM_INT);
-    //     $statement->execute();
-    //     $members = $statement->fetchAll(PDO::FETCH_ASSOC);
-    //     if ($members['id'] === $profile_id)
-    // }
-    
-    
-    
-    // CHECK IF CONVERSATION EXCIST BETWEEN USER AND PROFILE
-    // START OR DONT START A CONVERSATION
 
     // GET MESSAGES FROM CONVERSATION
     $statement = $pdo->prepare('SELECT m.sender_id, m.content, u.username, u.profile_picture FROM messages m 
         INNER JOIN users u ON m.sender_id = u.id WHERE conversation_id = :conversation_id');
-        if (!$statement){
-            die(var_dump($pdo->errorInfo()));
-        }
     $statement->bindParam(':conversation_id', $conversation_id, PDO::PARAM_INT);
     $statement->execute();
     $messages = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
-    // $statement = $pdo->prepare(
-    //     'SELECT m.to_id, m.from_id, m.content, m.created_at, u.username, u.profile_picture 
-    //     FROM messages m INNER JOIN users u 
-    //     ON m.to_id = u.id 
-    //     WHERE m.to_id = :id AND m.from_id = :profile_id OR m.to_id = :profile_id AND m.from_id = :id'
-    //     );
-    // if (!$statement){
-    //     die(var_dump($pdo->errorInfo()));
-    // }
-    // $statement->bindParam(':id', $user_id, PDO::PARAM_INT);
-    // $statement->bindParam(':profile_id', $profile_id, PDO::PARAM_INT);
-    // $statement->execute();
-    // $messages = $statement->fetchAll(PDO::FETCH_ASSOC);
    
     $to_user= get_user_by_id($profile_id, $pdo);
     // die(var_dump($messages, $conversation_id));

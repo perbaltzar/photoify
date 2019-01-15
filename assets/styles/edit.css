@@ -59,8 +59,37 @@
   margin-top: 10vh;
   align-self: center;
 }
+.edit-text{
+  font-size: 2vh;
+  margin-top: 2vh;
+}
 
 /* CHANGING SOME FOR UPLOAD PROFILE PICTURE*/
 .profile-picture-preview{
   border-radius: 50%;
+}
+
+/**/
+.delete-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-yes-button{
+  background-color: var(--error);
+}
+
+/* ADDITIONAL STYLE FOR PROFILE PICTURE*/
+.profile-picture-upload
+{
+  margin-top: 12vh;
+}
+.post-preview-container-profile-picture{
+  margin-top: 5vh;
+  width: 100vw;
+  height: 100vw;
+}
+.profile-picture-preview{
+  width: 100vw;
+  height: 100vw;
 }

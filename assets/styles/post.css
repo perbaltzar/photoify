@@ -8,15 +8,26 @@
   background-color: var(--primary);
   letter-spacing: 1vw;
   border-radius: 3vh;
-  margin-top: 4vh;
+  margin-top: 0.5vh;
 }
 .post-upload-container{
   font-size: 2vh;
+  background-color: var(--primary);
+  padding: 0.5vh 7vh;
+  border-radius: 1vh;
+  margin-left: 2vh;
+  
+}
+.post-file-label-container{
+  font-size: 4vw;
+  display: flex;
+  align-items: center;
+  margin-top: 4vh;
 }
 .post-preview{
   width: 80vw;
   height: 80vw;
-  margin: 2vh 2vh;
+  /* margin: 2vh 2vh; */
 }
 .post-preview-container{
   width: 80vw;
@@ -32,12 +43,14 @@
 }
 .post-description-container{
   font-size: 2vh;
+  
 }
 .post-description{
-  border: 3px solid black;
+  border: 1px solid black;
   width: 90vw;
   height: 20vh;
   font-size: 2vh;
+  padding: 1vh;
 }
 .post-form{
   width: 90%;
@@ -46,12 +59,15 @@
   flex-flow: column;
   align-items: center;
 }
-.post-file{
-  font-family: 'Dosis', sans-serif;
-  color: white;
-  background-color: var(--primary);
+.post-file-label{
+  color: black;
+  
+  /* background-color: var(--primary); */
   font-size: 3vh;
-  width: 30vw;
+
+}
+.post-file{
+  display: none;
 }
 /* EXTRA DESIGN FOR EDIT POST*/
 .edit-post-container{

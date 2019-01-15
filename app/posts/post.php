@@ -3,7 +3,14 @@
 declare(strict_types=1);
 require __DIR__.'/../../views/header.php';
 
-if (isset($_FILES['content']) && is_logged_in()){
+// Check if user is logged in
+if (!is_logged_in())
+{
+  $_SESSION['error'] = 'You\'re Not Logged In';
+  redirect('/');
+}
+
+if (isset($_FILES['content'])){
   $post = $_FILES['content'] ;
   // die(var_dump($post));
 
