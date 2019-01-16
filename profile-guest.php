@@ -30,10 +30,12 @@ if (is_logged_in()){
         <h6 class="profile-sub-headline">Followers</h6>
       </div>
     </a>
-    <div class="guest-profile-followers">
-      <h5 class="profile-headline"><?=$following?></h5>
-      <h6 class="profile-sub-headline">Following</h6>
-    </div>
+    <a href="following.php?profile_id=<?=$profile_id ?>">
+      <div class="guest-profile-followers">
+        <h5 class="profile-headline"><?=$following?></h5>
+        <h6 class="profile-sub-headline">Following</h6>
+      </div>
+    </a>
   </div>
     <div class="profile-picture-container">
       <img class="profile-picture" src="assets/uploads/<?=$profile['profile_picture'];?>">

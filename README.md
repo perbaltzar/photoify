@@ -9,14 +9,7 @@ Install or use an existing server software to read the php-files. MAMP for examp
 ### BACKEND
 
 * Scrolling through all/friends post.
-* Sorting the posts.
 * Report
-* Have seen this post function
-* Search for themes. (#hashtag)
-* Error messages
-* Delete pictures from files system when deleted
-* Not able to follow yourself.
-* Look at saftey, logged in and owner of post
 
 ### FRONT END
 * Counting characters in biography and post description
@@ -24,6 +17,9 @@ Install or use an existing server software to read the php-files. MAMP for examp
 * Error messages
 
 ### DONE
+* Not able to follow yourself.
+* Look at saftey, logged in and owner of post
+* Delete pictures from files system when deleted
 * Make an edit menu for post like on you    r profile
 * Make a graphic structure
 * Folder structure
@@ -52,4 +48,5 @@ Install or use an existing server software to read the php-files. MAMP for examp
 [Per Baltzar](https://github.com/perbaltzar)
 
 ### TESTERS
-No one yet
+[Erik Arvidsson](https://github.com/erikarvidsson)
+[Lovisa Hallgren](https://github.com/lovisahallgren)
