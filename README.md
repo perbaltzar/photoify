@@ -50,3 +50,4 @@ Install or use an existing server software to read the php-files. MAMP for examp
 ### TESTERS
 * [Erik Arvidsson](https://github.com/erikarvidsson)
 * [Lovisa Hallgren](https://github.com/lovisahallgren)
+* [Izabella Larsson](https://github.com/izabellalarsson)
