@@ -13,7 +13,7 @@ if (!is_logged_in())
 //Check if follow id is set
 
 if (isset($_GET['follow_id'])){
-  $follow_id = (int)filter_var($_GET['follow_id'], FILTER_SANITIZE_NUMBER_INT);
+  $follow_id = (int)filter_var($_GET['follow_id'], FILTER_VALIDATE_INT);
   $user_id = (int)$_SESSION['user']['id'];
 
   // Check if row allready excist in database or return false if it's not

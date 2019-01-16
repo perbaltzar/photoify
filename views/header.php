@@ -24,4 +24,6 @@ require __DIR__.'/../app/autoload.php';
     <link rel="stylesheet" href="assets/styles/comments.css">
     <link rel="stylesheet" href="assets/styles/search.css">
     <link rel="stylesheet" href="assets/styles/message.css">
+    <link rel="stylesheet" href="assets/styles/desktop.css">
   </head>
+<body>

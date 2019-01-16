@@ -32,24 +32,6 @@ if (!is_logged_in())
   $statement->bindParam(':id', $id, PDO::PARAM_INT);
   $statement->execute();
 
-  $statement = $pdo->prepare('DELETE FROM posts WHERE user_id = :id');
-  $statement->bindParam(':id', $id, PDO::PARAM_INT);
-  $statement->execute();
-
-  $statement = $pdo->prepare('DELETE FROM followers WHERE user_id = :id OR follower_id = :id');
-  $statement->bindParam(':id', $id, PDO::PARAM_INT);
-  $statement->execute();
-
-  $statement = $pdo->prepare('DELETE FROM comments WHERE user_id = :id');
-  $statement->bindParam(':id', $id, PDO::PARAM_INT);
-  $statement->execute();
-
-  $statement = $pdo->prepare('DELETE FROM likes WHERE user_id = :id');
-  $statement->bindParam(':id', $id, PDO::PARAM_INT);
-  $statement->execute();
-
-
-
 session_destroy();
 redirect('/');
 

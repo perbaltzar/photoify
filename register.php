@@ -50,3 +50,4 @@ if (isset($_SESSION['error'])){
 }
 
 ?>
+<?php require __DIR__.'/footer.php';

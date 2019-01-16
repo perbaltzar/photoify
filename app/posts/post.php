@@ -13,13 +13,15 @@ if (!is_logged_in())
 if (isset($_FILES['content'])){
   $post = $_FILES['content'] ;
   // die(var_dump($post));
-
-// Checking file types and size
+  
+  // Checking file types and size
   if ($post['type'] === 'image/jpeg' || $post['type'] === 'image/png' || $post['type'] === 'image/gif'){
-    if ($post['size'] < 3000000){
+    if ($post['size'] < 200000000){
+      // die (var_dump($post));
+      $description = trim(filter_var($_POST['description'], FILTER_SANITIZE_STRING));
       $id = (int) $_SESSION['user']['id'];
       $path = '/../../assets/uploads/';
-      $post_name = time().'-'.$id.'-'.$post['name'];
+      $post_name = time().'-'.$id.'-'.rand(0, 10000000);
       $created_at = date("Y-m-d H:i:s");
 
       move_uploaded_file($post['tmp_name'], __DIR__.$path.$post_name);
@@ -32,7 +34,7 @@ if (isset($_FILES['content'])){
       );
       $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
       $statement->bindParam(':content', $post_name, PDO::PARAM_STR);
-      $statement->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
+      $statement->bindParam(':description', $description, PDO::PARAM_STR);
       $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
       $statement->execute();
       redirect('/post.php');
@@ -44,7 +46,7 @@ if (isset($_FILES['content'])){
     $_SESSION['error'] = 'The image file type is not allowed.';
   }
 }
-die;
+
 redirect('/feed.php');
 
 

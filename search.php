@@ -20,6 +20,5 @@ require __DIR__.'/views/header.php';
 <script src="assets/scripts/search.js">
 </script>
 
-<?php
-require __DIR__.'/views/navbar.php';
-?>
+<?php require __DIR__.'/views/navbar.php'; ?>
+<?php require __DIR__.'/footer.php'; ?>

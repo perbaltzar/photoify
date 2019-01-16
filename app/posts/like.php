@@ -15,7 +15,7 @@ if (isset($_POST['post_id']))
 {
   $user_id = (int)$_SESSION['user']['id'];
   $created_at = date("Y-m-d");
-  $post_id = (int) $_POST['post_id'];
+  $post_id = (int) filter_var($_POST['post_id'], FILTER_VALIDATE_INT);
 
   // Check if like already excist in Database
   $statement = $pdo->prepare('SELECT * FROM likes WHERE post_id = :post_id AND user_id = :user_id');

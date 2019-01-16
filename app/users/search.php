@@ -11,7 +11,7 @@ if (!is_logged_in())
 }
 if (isset($_POST['search']))
 {
-    $search = $_POST['search'];
+    $search = filter_var($_POST['search'], FILTER_SANITIZE_STRING);
     $statement = $pdo->prepare("SELECT * FROM users");
     $statement->execute();
     $users = $statement->fetchAll(PDO::FETCH_ASSOC);

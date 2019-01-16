@@ -21,7 +21,7 @@ $posts = array_reverse($posts);
 
 
 ?>
-<section class="all-feed-container">
+<section class="all-feed-container all-sections">
 
   <?php
   // Looping through all the posts
@@ -91,5 +91,5 @@ require __DIR__.'/views/navbar.php';
 ?>
 </section>
 <script type="text/javascript" src="assets/scripts/like.js">
-
-    </script>
+</script>
+<?php require __DIR__.'/footer.php';

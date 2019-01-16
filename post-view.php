@@ -92,12 +92,13 @@ if (is_logged_in() && isset($_GET['post_id'])){
           <button class="comment-button" type="submit" name="button">Comment</button>
         </form>
       </div>
+    </section>
     <?php
     require __DIR__.'/views/navbar.php';
     ?>
-  </section>
   <script src="assets/scripts/like.js">
   </script>
+<?php require __DIR__.'/footer.php';
 
 
 
@@ -110,7 +111,3 @@ if (is_logged_in() && isset($_GET['post_id'])){
 
 
 
-
-
-</body>
-</html>

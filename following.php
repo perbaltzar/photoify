@@ -44,5 +44,5 @@ if (isset($_GET['profile_id'])){
         </div>
     </div>
 </section>
-<?php
-require __DIR__.'/views/navbar.php';
+<?php require __DIR__.'/views/navbar.php'; ?>
+<?php require __DIR__.'/footer.php';

@@ -4,6 +4,7 @@ declare(strict_types=1);
 require __DIR__.'/views/header.php';
 
 if (is_logged_in()){
+  // $_SESSION['user'] = get_user_by_id ($_SESSION['user']['id'], $pdo);
   $biography = $_SESSION['user']['biography'];
   $username = $_SESSION['user']['username'];
   $name = $_SESSION['user']['first_name']." ".$_SESSION['user']['last_name'];

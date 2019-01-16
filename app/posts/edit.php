@@ -13,9 +13,9 @@ if (!is_logged_in())
 
 if (isset($_GET['post_id'], $_POST['description']))
 {
-  $post_id = (int)$_GET['post_id'];
+  $post_id = (int) filter_var($_GET['post_id'], FILTER_VALIDATE_INT);
   $user_id = (int)$_SESSION['user']['id'];
-  $description = $_POST['description'];
+  $description = trim(filter_var($_POST['description'], FILTER_SANITIZE_STRING));
   $updated_at = date("Y-m-d");
   $post = get_post_by_postid($post_id, $pdo);
 

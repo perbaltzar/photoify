@@ -13,7 +13,7 @@ if (!is_logged_in())
 
 if (isset($_POST['post_id'])){
   $user_id = (int) $_SESSION['user']['id'];
-  $post_id = (int) $_POST['post_id'];
+  $post_id = (int) filter_var($_POST['post_id'], FILTER_VALIDATE_INT);
 
 
   // Check if like already excist in Database

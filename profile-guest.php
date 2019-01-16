@@ -73,8 +73,5 @@ if (is_logged_in()){
     </div>
   </div>
 </section>
-<?php
-require __DIR__.'/views/navbar.php';
-?>
-</body>
-</html>
+<?php require __DIR__.'/views/navbar.php'; ?>
+<?php require __DIR__.'/footer.php';

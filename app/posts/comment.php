@@ -15,7 +15,7 @@ if (isset($_POST['comment'], $_GET['post_id']))
 {
   $redirect = $_GET['redirect'];
   $user_id = (int) $_SESSION['user']['id'];
-  $content = $_POST['comment'];
+  $content = trim(filter_var($_POST['comment'], FILTER_SANITIZE_FILTER));
   $post_id = (int) $_GET['post_id'];
   $created_at = date("Y-m-d");
 

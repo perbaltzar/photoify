@@ -39,5 +39,3 @@ searchForm.addEventListener('keyup', ()=>{
         })
     }
 })
-
-

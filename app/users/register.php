@@ -48,7 +48,6 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     redirect('/feed.php');
   }else{
     //PASSWORDS DOESN'T MATCH
-    // die(var_dump('hej'));
     $_SESSION['error'] = 'Passwords don\'t match';
   }
   redirect('/register.php');

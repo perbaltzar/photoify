@@ -29,7 +29,12 @@ if (is_logged_in()){
         $conversations[] = $statement->fetch(PDO::FETCH_ASSOC);
     }
     //Flipping array so latest is on top
-    $conversations = array_reverse($conversations);
+    if (!empty($conversations))
+    {
+        $conversations = array_reverse($conversations);
+    }else{
+        $conversations = [];
+    }
 }else{
     redirect ('/');
 }

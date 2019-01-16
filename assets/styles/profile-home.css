@@ -21,7 +21,7 @@
 
 .profile-picture{
   width: 100vw;
-  height: 100vw;
+  /* height: 100vw; */
 }
 .profile-container{
   display: flex;

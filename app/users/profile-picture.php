@@ -10,18 +10,19 @@ if (!is_logged_in())
   redirect('/');
 }
 
+
 if (isset($_FILES['profile_picture']))
 {
   $profile_picture = $_FILES['profile_picture'] ;
   $id = (int) $_SESSION['user']['id'];
 
-  if ($profile_picture['type'] === 'image/jpeg' || $profile_picture['type'] === 'image/png')
+  if ($profile_picture['type'] == 'image/jpeg' || $profile_picture['type'] == 'image/png')
   {
-    if ($post['size'] < 3000000)
-    {
+    if ($profile_picture['size'] < 30000000){
+
       //Create file name and save in directory
       $path = '/../../assets/uploads/';
-      $picture_name = time().'-'.$id.'-'.$profile_picture['name'];
+      $picture_name = time().'-'.$id.'-';
       move_uploaded_file($profile_picture['tmp_name'], __DIR__.$path.$picture_name);
 
       //Preparing and Excuting database-query
@@ -35,6 +36,6 @@ if (isset($_FILES['profile_picture']))
     }
   }
 
-  //Sending back to profile page
-  redirect('/profile-home.php');
 }
+//Sending back to profile page
+redirect('/profile-home.php');

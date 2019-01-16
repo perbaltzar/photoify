@@ -5,6 +5,7 @@ declare(strict_types=1);
 require __DIR__.'/views/header.php';
 
 if (isset($_GET['profile_id']) && is_logged_in()){
+    $conversation_exist = false;
     $user_id = (int)$_SESSION['user']['id'];
     $profile_id = (int)$_GET['profile_id'];
     $created_at = date("Y-m-d");
@@ -16,7 +17,7 @@ if (isset($_GET['profile_id']) && is_logged_in()){
     $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $statement->execute();
     $conversation_ids = $statement->fetchAll(PDO::FETCH_ASSOC);
-    // die(var_dump($conversation_ids));
+    
     foreach ($conversation_ids as $conversation_id) 
     {
         $statement = $pdo->prepare('SELECT user_id FROM conversation_members 
@@ -34,10 +35,9 @@ if (isset($_GET['profile_id']) && is_logged_in()){
             $conversation_id = $conversation_id['conversation_id'];
             $conversation_exist = true;
             break;
-        }else{
-            $conversation_exist = false;
         }
     }
+    
 
     // die(var_dump($conversation_exist, $profile_id_check));
     if (!$conversation_exist)

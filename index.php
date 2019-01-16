@@ -9,7 +9,7 @@ if (is_logged_in()){
 }
 ?>
 
-<article class="login-container">
+<section class="login-container">
   <img class="login-logo" src="assets/images/logo.png">
   <div class="login-error-container">
     <?php if (isset($_SESSION['error'])): ?>
@@ -32,6 +32,5 @@ if (is_logged_in()){
   <div class="login-register">
     Not a member yet? <a href="register.php">Register here</a>
   </div>
-</article>
-</body>
-</html>
+</section>
+<?php require __DIR__.'/footer.php';

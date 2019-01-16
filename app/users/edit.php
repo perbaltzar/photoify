@@ -17,8 +17,8 @@ if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],
   {
   // Putting POST into variable
   $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-  $firstName = filter_var(trim($_POST['first_name']), FILTER_SANITIZE_STRING);
-  $lastName = filter_var(trim($_POST['last_name']), FILTER_SANITIZE_STRING);
+  $first_name = filter_var(trim($_POST['first_name']), FILTER_SANITIZE_STRING);
+  $last_name = filter_var(trim($_POST['last_name']), FILTER_SANITIZE_STRING);
   $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
   $biography = filter_var(trim($_POST['biography']), FILTER_SANITIZE_STRING);
   $updated_at = date("Y-m-d");
@@ -34,7 +34,9 @@ if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->execute();
     $check_for_email = $statement->fetch(PDO::FETCH_ASSOC);
-    if ($check_for_email && $check_for_email['email'] !== $user['email']) {
+    
+    if ($check_for_email && $check_for_email['email'] !== $user['email']) 
+    {
       $_SESSION['error'] = 'Email already excist in database';
       redirect('/profile-edit.php?edit=profile');
     }
@@ -47,8 +49,8 @@ if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],
       }
       $statement->bindParam(':id', $id, PDO::PARAM_INT);
       $statement->bindParam(':username', $username , PDO::PARAM_STR);
-      $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
-      $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
+      $statement->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+      $statement->bindParam(':last_name', $last_name, PDO::PARAM_STR);
       $statement->bindParam(':email', $email, PDO::PARAM_STR);
       $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
       $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
