@@ -86,10 +86,8 @@ $posts = array_reverse($posts);
     </div>
   </div>
 <?php endforeach; ?>
-<?php
-require __DIR__.'/views/navbar.php';
-?>
 </section>
 <script type="text/javascript" src="assets/scripts/like.js">
 </script>
-<?php require __DIR__.'/footer.php';
+<?php require __DIR__.'/views/navbar.php'; ?>
+<?php require __DIR__.'/views/footer.php';

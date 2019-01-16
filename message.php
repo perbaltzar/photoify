@@ -7,7 +7,7 @@ require __DIR__.'/views/header.php';
 if (isset($_GET['profile_id']) && is_logged_in()){
     $conversation_exist = false;
     $user_id = (int)$_SESSION['user']['id'];
-    $profile_id = (int)$_GET['profile_id'];
+    $profile_id = (int) filter_var($_GET['profile_id'], FILTER_SANITIZE_NUMBER_INT);
     $created_at = date("Y-m-d");
     
     

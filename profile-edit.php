@@ -23,4 +23,4 @@ if (isset($_GET['edit']) && is_logged_in()){
 }
 
 require __DIR__.'/views/navbar.php';
-require __DIR__.'/footer.php';
+require __DIR__.'/views/footer.php';

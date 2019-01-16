@@ -5,7 +5,7 @@ declare(strict_types=1);
 require __DIR__.'/views/header.php';
 
 if (isset($_GET['profile_id'])){
-    $profile_id = $_GET['profile_id'];
+    $profile_id = filter_var($_GET['profile_id'], FILTER_SANITIZE_NUMBER_INT);
 
     
     // $id = (int) $_SESSION['user']['id'];
@@ -45,4 +45,4 @@ if (isset($_GET['profile_id'])){
     </div>
 </section>
 <?php require __DIR__.'/views/navbar.php'; ?>
-<?php require __DIR__.'/footer.php';
+<?php require __DIR__.'/views/footer.php';

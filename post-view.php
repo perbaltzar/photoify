@@ -4,7 +4,7 @@ declare(strict_types=1);
 require __DIR__.'/views/header.php';
 
 if (is_logged_in() && isset($_GET['post_id'])){
-  $post_id = (int) $_GET['post_id'];
+  $post_id = (int) filter_var($_GET['post_id'], FILTER_SANITIZE_NUMBER_INT);
   $id = (int) $_SESSION['user']['id'];
 
   // Collecting data from database, tables users and posts
@@ -31,7 +31,7 @@ if (is_logged_in() && isset($_GET['post_id'])){
     <div class="feed-container">
       <div class="feed-avatar-container">
         <img class="feed-avatar" src="<?='/assets/uploads/'.$post['profile_picture']?>">
-        <?php if (is_owner_of_post($post_id, $id)): ?>
+        <?php if (is_owner_of_post((int)$post['user_id'], $id)): ?>
           <div class="feed-name-container">
             <a class="feed-avatar-link" href="profile-home.php"><?=$post['username'];?></a>
             <?=$ago?> days ago
@@ -45,7 +45,7 @@ if (is_logged_in() && isset($_GET['post_id'])){
         <?php else: ?>
           <div class="feed-name-container">
             <a class="feed-avatar-link" href="profile-guest.php?profile_id=<?=$poster_id;?>"><?=$post['username'];?></a>
-            <?=$ago?> days ago
+            <?=$ago?>
           </div>
 
 
@@ -98,7 +98,7 @@ if (is_logged_in() && isset($_GET['post_id'])){
     ?>
   <script src="assets/scripts/like.js">
   </script>
-<?php require __DIR__.'/footer.php';
+<?php require __DIR__.'/views/footer.php';
 
 
 

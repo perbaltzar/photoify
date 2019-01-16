@@ -13,10 +13,10 @@ if (!is_logged_in())
 
 if (isset($_POST['comment'], $_GET['post_id']))
 {
-  $redirect = $_GET['redirect'];
+  $redirect = filter_var($_GET['redirect'], FILTER_SANITIZE_STRING);
   $user_id = (int) $_SESSION['user']['id'];
-  $content = trim(filter_var($_POST['comment'], FILTER_SANITIZE_FILTER));
-  $post_id = (int) $_GET['post_id'];
+  $content = trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING));
+  $post_id = (int) filter_var($_GET['post_id'], FILTER_SANITIZE_NUMBER_INT);
   $created_at = date("Y-m-d");
 
   $statement = $pdo->prepare(

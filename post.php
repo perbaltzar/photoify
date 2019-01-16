@@ -29,4 +29,4 @@ require __DIR__.'/views/header.php';
 
 </script>
 <?php require __DIR__.'/views/navbar.php'; ?>
-<?php require __DIR__.'/footer.php';
+<?php require __DIR__.'/views/footer.php';

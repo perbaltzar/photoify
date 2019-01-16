@@ -6,7 +6,7 @@ require __DIR__.'/views/header.php';
 
 ?>
 
-<section>
+<section class="search-section">
     <div class="search-bar">
         <p class="search-p">Search for Usernames or Full Names</p>
         <form class="search-form" action="app/users/search.php" method="post">
@@ -21,4 +21,4 @@ require __DIR__.'/views/header.php';
 </script>
 
 <?php require __DIR__.'/views/navbar.php'; ?>
-<?php require __DIR__.'/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

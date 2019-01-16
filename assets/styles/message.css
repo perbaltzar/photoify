@@ -1,9 +1,16 @@
-.all-message-container{
-    height: 50vh;
+.all-messages-container{
+    height: 63vh;
+    width: 70%;
+    overflow: scroll;
+   
+    
 }
 .new-message-container{
     height: 25vh;
-    bottom: 9vh;
+    bottom: 7vh;
+    /* position: absolute; */
+    z-index: 2;
+    width: 100%;
 }
 .message-section{
     display: flex;
@@ -17,24 +24,23 @@
 }
 .message-container{
     max-width: 84vw;
-    font-size: 2vh;
     margin: 1vh 10vw 0 2vw;
     padding: 1vh;
     border: 1px solid black;
     border-radius: 25px;
 }
 .own-message-container {
-  max-width: 84vw;
-  font-size: 2vh;
-  margin: 1vh 2vw 0 10vw;
-  padding: 1vh;
-  border: 1px solid black;
-  border-radius: 25px;
-  background-color: var(--primary);
+    max-width: 84%;
+    margin: 1vh 2vw 0 10vw;
+    padding: 1vh;
+    border: 1px solid black;
+    border-radius: 25px;
+     background-color: var(--primary);
 }
 .message{
-    width: 86vw;
+    width: 86%;
+    font-size: 36px;
 }
 .conversations-container{
-    width: 90vw;
+    width: 90%;
 }

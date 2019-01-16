@@ -1,7 +1,13 @@
+.search-section{
+  min-height: 93vh;
+}
 .search-form {
   padding-top: 2vh;
+  display: flex;
+  justify-content: center;
   height: 6vh;
   font-size: 2.5vh;
+  width: 100%;
 }
 
 .search-bar{
@@ -13,7 +19,7 @@
 .search-input {
   height: 6vh;
   font-size: 2.5vh;
-  width: 85vw;
+  width: 90%;
   border: 1px solid black;
   padding-left: 2vw;
 }

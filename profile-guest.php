@@ -6,7 +6,7 @@ require __DIR__.'/views/header.php';
 if (is_logged_in()){
   if (isset($_GET['profile_id'])){
     // Collecting userdata from database
-    $profile_id = (int)$_GET['profile_id'];
+    $profile_id = (int)filter_var($_GET['profile_id'], FILTER_SANITIZE_NUMBER_INT);
     $profile = get_user_by_id($profile_id, $pdo);
     $user_id = (int)$_SESSION['user']['id'];
   }
@@ -66,12 +66,15 @@ if (is_logged_in()){
     </div>
     <div class="profile-posts">
       <?php foreach ($posts as $post): ?>
-        <a href="post-view.php?post_id=<?=$post['id'];?>">
-          <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
-        </a>
+        <div class="profile-post-container">
+          <a href="post-view.php?post_id=<?=$post['id'];?>">
+            <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
+          </a>
+        </div>
       <?php endforeach; ?>
     </div>
   </div>
 </section>
+<script src="assets/scripts/thumbnail.js"></script>
 <?php require __DIR__.'/views/navbar.php'; ?>
-<?php require __DIR__.'/footer.php';
+<?php require __DIR__.'/views/footer.php';

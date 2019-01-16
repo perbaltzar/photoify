@@ -5,7 +5,7 @@ declare(strict_types=1);
 require __DIR__.'/views/header.php';
 
 if (isset($_GET['profile_id'])){
-    $profile_id = $_GET['profile_id'];
+    $profile_id = (int)filter_var($_GET['profile_id'], FILTER_SANITIZE_NUMBER_INT);
 
     $statement = $pdo->prepare('SELECT f.follower_id, u.username, u.id as user_id, u.profile_picture
         FROM followers f INNER JOIN users u 
@@ -39,4 +39,4 @@ if (isset($_GET['profile_id'])){
     </div>
 </section>
 <?php require __DIR__.'/views/navbar.php'; ?>
-<?php require __DIR__.'/footer.php';
+<?php require __DIR__.'/views/footer.php';

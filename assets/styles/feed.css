@@ -41,6 +41,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: 3vh;
+  
 }
 .feed-comments-and-likes{
   color: var(--grey);
@@ -56,8 +57,11 @@
   text-decoration: none;
 }
 .feed-description{
-  font-size: 2vh;
   padding: 0 1vh 10vh 1vh;
+  font-size: 38px;
+}
+.feed-description p{
+  font-size: 38px;
 }
 .feed-edit{
   height: 5vh;
@@ -66,4 +70,9 @@
 }
 .hidden{
   display: none;
+}
+.like-button{
+  border: 0;
+  background-color: white;
+  
 }

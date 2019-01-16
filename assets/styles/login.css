@@ -17,13 +17,16 @@
   color: var(--error);
   font-weight: 600;
 }
+.login-form{
+  width: 70%;
+}
 .login-button{
   font-family: 'Dosis', sans-serif;
   font-weight: semibold;
   color: var(--bg-color);
   font-size: 4vh;
   height: 8vh;
-  width: 70vw;
+  width: 100%;
   background-color: var(--primary);
   letter-spacing: 1vw;
   border-radius: 3vh;
@@ -32,7 +35,7 @@
   background-color: transparent;
   border: none;
   border-bottom: 3px solid var(--font);
-  width: 70vw;
+  width: 100%;
   font-size: 3vh;
   color: var(--grey);
 }
@@ -46,9 +49,13 @@
   margin: 3vh 0;
   height: 10vh;
 }
-.login-input:focus{
-}
+
 .login-register{
   font-size: 2vh;
+  padding-bottom: 2vh;
+
+}
+.register-link{
+  color: var(--primary);
 
 }

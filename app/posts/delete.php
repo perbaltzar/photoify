@@ -15,12 +15,12 @@ if (isset($_GET['post_id']))
 {
   $post_id = (int)filter_var($_GET['post_id'], FILTER_VALIDATE_INT);
   $user_id = (int)$_SESSION['user']['id'];
-
+ 
   
   $post = get_post_by_postid($post_id, $pdo);
   
   // Check if user own post
-  if (!is_owner_of_post($post['user_id'], $user_id))
+  if (!is_owner_of_post((int)$post['user_id'], $user_id))
   {
     redirect('/');
   }

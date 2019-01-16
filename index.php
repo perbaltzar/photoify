@@ -30,7 +30,7 @@ if (is_logged_in()){
     <button class="login-button"type="submit" class="btn btn-primary">LOGIN</button>
   </form>
   <div class="login-register">
-    Not a member yet? <a href="register.php">Register here</a>
+    Not a member yet? <a class="register-link" href="register.php">Register here</a>
   </div>
 </section>
-<?php require __DIR__.'/footer.php';
+<?php require __DIR__.'/views/footer.php';

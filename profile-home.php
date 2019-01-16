@@ -62,20 +62,21 @@ if (is_logged_in()){
 
   <div class="profile-posts">
     <?php foreach ($posts as $post): ?>
-      <a href="post-view.php?post_id=<?=$post['id'];?>">
-        <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
-      </a>
+      <div class="profile-post-container">
+        <a href="post-view.php?post_id=<?=$post['id'];?>">
+            <img class="profile-post" src="assets/uploads/<?=$post['content']?>">
+          </a>
+      </div>
     <?php endforeach; ?>
-  </div>
+  </di>
 
 
 
 
 
 </section>
-<script type="text/javascript" src="assets/scripts/profile-home.js">
-
-</script>
+<script type="text/javascript" src="assets/scripts/profile-home.js"> </script>
+<script src="assets/scripts/thumbnail.js"></script>
 <?php
 require __DIR__.'/views/navbar.php';
 ?>
