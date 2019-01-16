@@ -30,7 +30,7 @@ if (is_logged_in()){
         <h6 class="profile-sub-headline">Followers</h6>
       </div>
     </a>
-    <a href="following.php?profile_id=<?=$profile_id ?>">
+    <a class="following" href="following.php?profile_id=<?=$profile_id ?>">
       <div class="guest-profile-followers">
         <h5 class="profile-headline"><?=$following?></h5>
         <h6 class="profile-sub-headline">Following</h6>

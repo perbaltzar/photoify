@@ -20,6 +20,13 @@
   left: 50%;
   transform: translateX(-15%);
 }
+.square{
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  transform: translate(0,0);
+}
 .profile-username-container{
   display: flex;
   justify-content: space-between;
@@ -139,4 +146,7 @@ ul{
 }
 .guest-start-follow a{
   color: var(--primary);
+}
+.following{
+  margin-right: 2vh;
 }

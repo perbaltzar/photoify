@@ -3,7 +3,7 @@
 require __DIR__.'/views/header.php';
 
 if (isset($_GET['edit']) && is_logged_in()){
-  $edit = $_GET['edit'];
+  $edit = filter_var($_GET['edit'], FILTER_SANITIZE_STRING);
   // die(var_dump($edit));
   
   //Getting the right kind of edit to put on page

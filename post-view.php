@@ -29,28 +29,28 @@ if (is_logged_in() && isset($_GET['post_id'])){
   ?>
   <section class="all-feed-container">
     <div class="feed-container">
-      <div class="feed-avatar-container">
-        <img class="feed-avatar" src="<?='/assets/uploads/'.$post['profile_picture']?>">
-        <?php if (is_owner_of_post((int)$post['user_id'], $id)): ?>
-          <div class="feed-name-container">
-            <a class="feed-avatar-link" href="profile-home.php"><?=$post['username'];?></a>
-            <?=$ago?> days ago
-          </div>
-          <div class="feed-edit-container">
+      
+        <div class="feed-avatar-container">
+          <img class="feed-avatar" src="<?='/assets/uploads/'.$post['profile_picture']?>">
+          <?php if (is_owner_of_post((int)$post['user_id'], $id)): ?>
+            <div class="feed-name-container">
+              <a class="feed-avatar-link" href="profile-home.php"><?=$post['username'];?></a>
+              <?=$ago?> days ago
+            </div>
+            <div class="feed-edit-container">
 
-            <a href="post-edit.php?post_id=<?=$post_id;?>">
-              <img class="feed-edit" src="assets/icons/edit.svg">
-            </a>
-          </div>
-        <?php else: ?>
-          <div class="feed-name-container">
-            <a class="feed-avatar-link" href="profile-guest.php?profile_id=<?=$poster_id;?>"><?=$post['username'];?></a>
-            <?=$ago?>
-          </div>
-
-
-        <?php endif; ?>
-      </div>
+              <a href="post-edit.php?post_id=<?=$post_id;?>">
+                <img class="feed-edit" src="assets/icons/edit.svg">
+              </a>
+            </div>
+          <?php else: ?>
+            <div class="feed-name-container">
+              <a class="feed-avatar-link" href="profile-guest.php?profile_id=<?=$post['user_id'];?>"><?=$post['username'];?></a>
+              <?=$ago?>
+            </div>
+          <?php endif; ?>
+        </div>
+      
       <div class="feed-img-container">
 
           <img class="feed-img" src="<?='/assets/uploads/'.$post['content']?>">

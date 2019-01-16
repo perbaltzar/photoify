@@ -37,7 +37,7 @@ if (isset($_FILES['content'])){
       $statement->bindParam(':description', $description, PDO::PARAM_STR);
       $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
       $statement->execute();
-      redirect('/post.php');
+      // redirect('/post.php');
 
     }else{
       $_SESSION['error'] = 'The uploaded file exceeded the file size limit.';

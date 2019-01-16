@@ -1,6 +1,6 @@
 <section class="edit-section">
     <h1 class="edit-headline">CHANGE PASSWORD</h1>
-    <form class="edit-form" action="/../../app/users/edit.php" method="post">
+    <form class="edit-form" action="/../../app/users/password.php" method="post">
       <div class="edit-div">
         <div class="edit-label">
           <label for="firstName">Password</label>
