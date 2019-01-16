@@ -48,5 +48,5 @@ Install or use an existing server software to read the php-files. MAMP for examp
 [Per Baltzar](https://github.com/perbaltzar)
 
 ### TESTERS
-[Erik Arvidsson](https://github.com/erikarvidsson)
-[Lovisa Hallgren](https://github.com/lovisahallgren)
+* [Erik Arvidsson](https://github.com/erikarvidsson)
+* [Lovisa Hallgren](https://github.com/lovisahallgren)
