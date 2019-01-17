@@ -7,7 +7,7 @@ require __DIR__.'/../autoload.php';
 // Checking if user is logged in
 if (!is_logged_in())
 {
-  $_SESSION['error'] = 'You\'re Not Logged In';
+  $_SESSION['error'] = "Please log in and try again!";
   redirect('/');
 }
 if (isset($_POST['password'], $_POST['new-password'], $_POST['repeat-password']))
@@ -19,6 +19,7 @@ if (isset($_POST['password'], $_POST['new-password'], $_POST['repeat-password'])
 
     if ($new_password !== $repeat_password)
     {
+        $_SESSION['error'] = "Try to confirm your new password again";
         redirect('/profile-edit.php?edit=password');
     }
 
@@ -34,7 +35,9 @@ if (isset($_POST['password'], $_POST['new-password'], $_POST['repeat-password'])
         $statement->bindParam(':password', $new_password, PDO::PARAM_STR);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
+        $_SESSION['success'] = "Password has been changed!";
         redirect('/profile-home.php');
     }
+    $_SESSION['error'] = "Your old password doesn't match";
     redirect('/profile-edit.php?edit=password');
 }

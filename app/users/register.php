@@ -11,6 +11,11 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
 
     // Collection data from input fields
     $email = strtolower(filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL));
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+      $_SESSION['error'] = "Your email doesn't quite look right, try another one!";
+      redirect('/register.php');
+    }
     $firstName = filter_var(trim($_POST['firstName']), FILTER_SANITIZE_STRING);
     $lastName = filter_var(trim($_POST['lastName']), FILTER_SANITIZE_STRING);
     $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
@@ -22,7 +27,7 @@ if (isset($_POST['email'], $_POST['firstName'], $_POST['lastName'],$_POST['passw
     // Checking database to see if email already excist
     $user = get_user_by_email($email, $pdo);
     if (!empty($user)){
-      $_SESSION['error'] = 'Email already exist';
+      $_SESSION['error'] = 'Email already i use, try another one!';
       redirect('/register.php');
     }
 

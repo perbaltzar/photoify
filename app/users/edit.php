@@ -7,7 +7,7 @@ require __DIR__.'/../autoload.php';
 // Checking if user is logged in
 if (!is_logged_in())
 {
-  $_SESSION['error'] = 'You\'re Not Logged In';
+  $_SESSION['error'] = "Please log in and try again!";
   redirect('/');
 }
 
@@ -37,7 +37,7 @@ if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],
     
     if ($check_for_email && $check_for_email['email'] !== $user['email']) 
     {
-      $_SESSION['error'] = 'Email already excist in database';
+      $_SESSION['error'] = 'Email already excist in database, try another one';
       redirect('/profile-edit.php?edit=profile');
     }
     else
@@ -58,7 +58,11 @@ if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],
 
       // Updating the Session Variable
       $_SESSION['user'] = get_user_by_id($id, $pdo);
+      $_SESSION['success'] = "Changes has been saved!";
     }
+  }else{
+    $_SESSION['error'] = "Password doesn't match, please try again!";
+    redirect('/profile-edit.php?edit=profile');
   }
   redirect('/../../profile-home.php');
 }

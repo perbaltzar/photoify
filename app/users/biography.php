@@ -30,9 +30,10 @@ if (isset($_POST['biography'])){
 
   //Storing biography in session variable
   $_SESSION['user']['biography'] = $biography;
+  $_SESSION['success'] = "Your profile picture has been updated!";
 }else{
   //Returning error-message
-  $_SESSION['error'] = 'You\'re not logged in';
+  $_SESSION['error'] = "Please log in and try again!";
 }
 
 //Redirecting back to profile

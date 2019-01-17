@@ -7,7 +7,7 @@ require __DIR__.'/../autoload.php';
 // Check if user is logged in
 if (!is_logged_in())
 {
-  $_SESSION['error'] = 'You\'re Not Logged In';
+  $_SESSION['error'] = "Please log in and try again!";
   redirect('/');
 }
 
@@ -28,6 +28,9 @@ if (isset($_GET['post_id'], $_POST['description']))
     $statement->bindParam(':description', $description, PDO::PARAM_STR);
     $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
     $statement->execute();
+    $_SESSION['success'] = "Changes has been saved!";
+  }else{
+    $_SESSION['error'] = "Oops, something went wrong here. Please try again later!";
   }
 }
 redirect('/feed.php');

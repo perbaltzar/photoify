@@ -6,7 +6,7 @@ require __DIR__.'/../autoload.php';
     
 if (!is_logged_in())
 {
-  $_SESSION['error'] = 'You\'re Not Logged In';
+  $_SESSION['error'] = "Please log in and try again!";
   redirect('/');
 }
 if (isset($_POST['search']))
@@ -29,7 +29,7 @@ if (isset($_POST['search']))
     }
     if (empty($results))
     {
-        $results = 'No users found';
+        $results = 'No users found :(';
     }
 
     $results = json_encode($results);

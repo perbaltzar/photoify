@@ -7,7 +7,7 @@ require __DIR__.'/../autoload.php';
 // Check if user is logged in
 if (!is_logged_in())
 {
-  $_SESSION['error'] = 'You\'re Not Logged In';
+  $_SESSION['error'] = "Please log in and try again!";
   redirect('/');
 }
 
@@ -34,8 +34,7 @@ if (isset($_GET['post_id']))
   $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
   $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
   $statement->execute();
-
-}else{
-  
+  $_SESSION['success'] = "Your post have been deleted";
 }
+
 redirect('/');

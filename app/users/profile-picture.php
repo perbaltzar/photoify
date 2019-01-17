@@ -33,6 +33,7 @@ if (isset($_FILES['profile_picture']))
 
       //Storing path and name in session variable
       $_SESSION['user']['profile_picture'] = $picture_name;
+      $_SESSION['success'] = "Your profile picture has been changed";
     }
   }
 

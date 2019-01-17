@@ -7,7 +7,7 @@ require __DIR__.'/../autoload.php';
 
 if (!is_logged_in())
 {
-  $_SESSION['error'] = 'You\'re Not Logged In';
+  $_SESSION['error'] = "Please log in and try again!";
   redirect('/');
 }
 //Check if follow id is set

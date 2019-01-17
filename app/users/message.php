@@ -6,7 +6,7 @@ require __DIR__.'/../autoload.php';
 // Check if user is logged in
 if (!is_logged_in())
 {
-  $_SESSION['error'] = 'You\'re Not Logged In';
+  $_SESSION['error'] = "Please log in and try again!";
   redirect('/');
 }
 

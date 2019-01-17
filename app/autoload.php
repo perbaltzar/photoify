@@ -23,8 +23,3 @@ $config = require __DIR__.'/config.php';
 // Setup the database connection.
 $pdo = new PDO($config['database_path']);
 
-// Reseting Session Error so message don't stick
-if (isset($_SESSION['error']))
-{
-    unset($_SESSION['error']);
-}

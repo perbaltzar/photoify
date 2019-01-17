@@ -1,0 +1,47 @@
+.display-message{
+    width: 100%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    position: absolute;
+    animation-name: fadeout;
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+    text-align: center;
+    background-color: white;
+}
+.error h1{
+    color: var(--error);
+    /* color: green; */
+}
+.success h1{
+    color: var(--success);
+    /* color: green; */
+}
+
+@keyframes fadeout{
+    0% 
+    {    
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    25%
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    75% 
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+   
+    100%
+    {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}

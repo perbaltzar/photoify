@@ -12,9 +12,7 @@ if (is_logged_in()){
 <section class="login-container">
   <img class="login-logo" src="assets/images/logo.png">
   <div class="login-error-container">
-    <?php if (isset($_SESSION['error'])): ?>
-      <h6 class="login-error"><?=$_SESSION['error'];?></h6>
-    <?php endif; ?>
+    
   </div>
   <form class="login-form" action="app/users/login.php" method="post">
     <div class="login-group">

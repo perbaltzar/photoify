@@ -44,10 +44,5 @@ require __DIR__.'/views/header.php';
     <button type="submit" class="edit-button">Register</button>
   </form>
 </section>
-<?php
-if (isset($_SESSION['error'])){
-  echo $_SESSION['error'];
-}
 
-?>
 <?php require __DIR__.'/views/footer.php';
