@@ -62,7 +62,7 @@ if (isset($_POST['email'], $_POST['first_name'], $_POST['last_name'],
     }
   }else{
     $_SESSION['error'] = "Password doesn't match, please try again!";
-    redirect('/profile-edit.php?edit=profile');
+    redirect('/profile-edit.php?edit=profilert23jgf´21ö');
   }
   redirect('/../../profile-home.php');
 }

@@ -36,9 +36,9 @@ function is_logged_in () : bool
 
 
 /**
- * Get a sentence with days, minutes or hours
+ * Return a sentence with days, minutes or hours
  * @param  int    $time [time passed]
- * @return string       []
+ * @return string       [a full sentence of the chosen unit]
  */
 
 function get_time(int $time): string{
@@ -62,16 +62,26 @@ function get_time(int $time): string{
 
 
 
-
-
-
+/**
+ * Sorting user array by username
+ *
+ * @param array $a first user
+ * @param array $b second user
+ * @return void
+ */
 function sort_by_username(array $a, array $b) 
 {
   return strcmp($a['username'], $b['username']);
 }
 
 
-
+/**
+ * Search through database
+ *
+ * @param [type] $users all users
+ * @param [type] $search search query
+ * @return array results
+ */
 function search_name($users, $search): array 
 {
   $ids = [];

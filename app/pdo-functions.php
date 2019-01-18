@@ -15,6 +15,13 @@ function get_user_by_id(int $id, object $pdo): array
     return $statement->fetch(PDO::FETCH_ASSOC);
   }
 
+  /**
+   * Counting likes
+   *
+   * @param integer $post_id id of post
+   * @param object $pdo 
+   * @return integer number of likes
+   */
 function count_likes(int $post_id, object $pdo): int 
 {
   $statement = $pdo->prepare('SELECT COUNT(*) FROM likes WHERE post_id = :post_id');
@@ -25,6 +32,14 @@ function count_likes(int $post_id, object $pdo): int
   return (int)$likes["COUNT(*)"];
 }
 
+
+/**
+ * Counting comments
+ *
+ * @param integer $post_id id of post
+ * @param object $pdo
+ * @return integer  number of comments
+ */
 function count_comments(int $post_id, object $pdo): int 
 {
   $statement = $pdo->prepare('SELECT COUNT(*) FROM comments WHERE post_id = :post_id');
@@ -34,6 +49,14 @@ function count_comments(int $post_id, object $pdo): int
   return (int)$comments["COUNT(*)"];
 }
 
+/**
+ * Check if post is liked by user
+ *
+ * @param integer $id id of user
+ * @param integer $post_id id of post
+ * @param object $pdo
+ * @return boolean if it's like or not
+ */
 function is_post_liked_by_user(int $id,int $post_id, object $pdo): bool
 {
    $statement = $pdo->prepare('SELECT * FROM likes
@@ -46,6 +69,13 @@ function is_post_liked_by_user(int $id,int $post_id, object $pdo): bool
   return $is_liked_by_user ? true : false;
 }
 
+/**
+ * Collecting all comments for a post
+ *
+ * @param integer $post_id
+ * @param object $pdo
+ * @return array
+ */
 function get_comments_by_postid(int $post_id, object $pdo): array
 {
   $statement = $pdo->prepare('SELECT c.id as comment_id, c.content,
@@ -58,6 +88,13 @@ function get_comments_by_postid(int $post_id, object $pdo): array
   return $comments;
 }
 
+/**
+ * Counting number of followers for a users
+ *
+ * @param integer $id user id
+ * @param object $pdo
+ * @return integer
+ */
 function count_followers(int $id, object $pdo): int 
 {
   $statement = $pdo->prepare('SELECT COUNT(*) FROM followers WHERE user_id = :user_id');
@@ -71,6 +108,13 @@ function count_followers(int $id, object $pdo): int
   return $followers;
 }
 
+/**
+ * Counting how many a user follow
+ *
+ * @param integer $id user id
+ * @param object $pdo
+ * @return integer
+ */
 function count_following(int $id, object $pdo):int
 {
   $statement = $pdo->prepare('SELECT COUNT(*) FROM followers WHERE follower_id = :user_id');
@@ -85,6 +129,13 @@ function count_following(int $id, object $pdo):int
   return $following;
 }
 
+/**
+ * Collect all post data from a users id
+ *
+ * @param integer $id post id
+ * @param object $pdo
+ * @return array
+ */
 function get_posts_by_userid (int $id, object $pdo): array
 {
   $statement = $pdo->prepare(
@@ -97,6 +148,13 @@ function get_posts_by_userid (int $id, object $pdo): array
   return array_reverse($posts);
 }
 
+/**
+ * Collect all post data from a posts id
+ *
+ * @param integer $post_id
+ * @param object $pdo
+ * @return array
+ */
 function get_post_by_postid (int $post_id, object $pdo): array
 {
    $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :post_id');
@@ -108,6 +166,13 @@ function get_post_by_postid (int $post_id, object $pdo): array
    return $statement->fetch(PDO::FETCH_ASSOC);
 }
 
+/**
+ * Collect all user data from email
+ *
+ * @param string $email
+ * @param object $pdo
+ * @return array
+ */
 function get_user_by_email(string $email, object $pdo): array
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email;');
