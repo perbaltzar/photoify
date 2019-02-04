@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 require __DIR__.'/views/header.php';
 
-if (isset($_GET['profile_id'])){
+if (isset($_GET['profile_id'])) {
     $profile_id = (int)filter_var($_GET['profile_id'], FILTER_SANITIZE_NUMBER_INT);
 
-    $statement = $pdo->prepare('SELECT f.follower_id, u.username, u.id as user_id, u.profile_picture
+    $statement = $pdo->prepare(
+        'SELECT f.follower_id, u.username, u.id as user_id, u.profile_picture
         FROM followers f INNER JOIN users u 
         WHERE u.id = f.follower_id AND f.user_id = :profile_id'
     );

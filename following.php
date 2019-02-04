@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 require __DIR__.'/views/header.php';
 
-if (isset($_GET['profile_id'])){
+if (isset($_GET['profile_id'])) {
     $profile_id = filter_var($_GET['profile_id'], FILTER_SANITIZE_NUMBER_INT);
 
     
     // $id = (int) $_SESSION['user']['id'];
-  $statement = $pdo->prepare('SELECT f.user_id as following_id, u.username, u.id as user_id, u.profile_picture
+    $statement = $pdo->prepare(
+      'SELECT f.user_id as following_id, u.username, u.id as user_id, u.profile_picture
     FROM followers f INNER JOIN users u 
     WHERE u.id = f.user_id AND f.follower_id = :profile_id'
   );
- if (!$statement){
-    die(var_dump($pdo->errorInfo()));
-  }
-  $statement->bindParam(':profile_id', $profile_id, PDO::PARAM_INT);
-  $statement->execute();
-  $following = $statement->fetchAll(PDO::FETCH_ASSOC);
-  usort($following, "sort_by_username");
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':profile_id', $profile_id, PDO::PARAM_INT);
+    $statement->execute();
+    $following = $statement->fetchAll(PDO::FETCH_ASSOC);
+    usort($following, "sort_by_username");
 }
 
  

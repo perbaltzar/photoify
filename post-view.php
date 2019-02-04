@@ -3,28 +3,28 @@
 declare(strict_types=1);
 require __DIR__.'/views/header.php';
 
-if (is_logged_in() && isset($_GET['post_id'])){
-  $post_id = (int) filter_var($_GET['post_id'], FILTER_SANITIZE_NUMBER_INT);
-  $id = (int) $_SESSION['user']['id'];
+if (is_logged_in() && isset($_GET['post_id'])) {
+    $post_id = (int) filter_var($_GET['post_id'], FILTER_SANITIZE_NUMBER_INT);
+    $id = (int) $_SESSION['user']['id'];
 
-  // Collecting data from database, tables users and posts
-  $statement = $pdo->prepare(
+    // Collecting data from database, tables users and posts
+    $statement = $pdo->prepare(
     "SELECT p.id as post_id, p.content, p.description, p.created_at, p.updated_at,
     u.username, u.id as user_id, u.profile_picture
     FROM posts p INNER JOIN users u WHERE u.id = p.user_id AND p.id = :post_id"
   );
-  $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
-  $statement->execute();
+    $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+    $statement->execute();
 
-  // Saving database in variable
-  $post = $statement->fetch(PDO::FETCH_ASSOC);
+    // Saving database in variable
+    $post = $statement->fetch(PDO::FETCH_ASSOC);
 
-  //Saving variable needed
-  $ago = get_time(time()-strtotime($post['created_at']));
-  $comments = get_comments_by_postid($post_id, $pdo);
-  $likes = count_likes($post_id, $pdo);
-  $is_liked_by_user = is_post_liked_by_user($id, $post_id, $pdo);
-  }
+    //Saving variable needed
+    $ago = get_time(time()-strtotime($post['created_at']));
+    $comments = get_comments_by_postid($post_id, $pdo);
+    $likes = count_likes($post_id, $pdo);
+    $is_liked_by_user = is_post_liked_by_user($id, $post_id, $pdo);
+}
 
   ?>
   <section class="all-feed-container">
@@ -99,15 +99,3 @@ if (is_logged_in() && isset($_GET['post_id'])){
   <script src="assets/scripts/like.js">
   </script>
 <?php require __DIR__.'/views/footer.php';
-
-
-
-
-
-
-
-
-
-
-
-

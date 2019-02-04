@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/views/header.php';
 
-if (is_logged_in()){
+if (is_logged_in()) {
     $user_id = (int)$_SESSION['user']['id'];
 
     $statement = $pdo->prepare('SELECT conversation_id FROM conversation_members 
@@ -20,7 +20,7 @@ if (is_logged_in()){
             INNER JOIN users u ON cm.user_id = u.id WHERE cm.conversation_id = :conversation_id 
             AND cm.user_id != :user_id'
         );
-        if (!$statement){
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
         $statement->bindParam(':conversation_id', $conversation_id['conversation_id'], PDO::PARAM_INT);
@@ -29,14 +29,13 @@ if (is_logged_in()){
         $conversations[] = $statement->fetch(PDO::FETCH_ASSOC);
     }
     //Flipping array so latest is on top
-    if (!empty($conversations))
-    {
+    if (!empty($conversations)) {
         $conversations = array_reverse($conversations);
-    }else{
+    } else {
         $conversations = [];
     }
-}else{
-    redirect ('/');
+} else {
+    redirect('/');
 }
 
 

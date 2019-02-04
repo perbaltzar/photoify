@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 require __DIR__.'/views/header.php';
 
- if (isset($_GET['post_id']) && is_logged_in()){
-   $user_id = (int)$_SESSION['user']['id'];
-   $post_id = (int)filter_var($_GET['post_id'], FILTER_SANITIZE_NUMBER_INT);
+ if (isset($_GET['post_id']) && is_logged_in()) {
+     $user_id = (int)$_SESSION['user']['id'];
+     $post_id = (int)filter_var($_GET['post_id'], FILTER_SANITIZE_NUMBER_INT);
 
-   //Collecting data from database
-   $post = get_post_by_postid($post_id, $pdo);
-   if ($post)
+     //Collecting data from database
+     $post = get_post_by_postid($post_id, $pdo);
+     if ($post) {
    
    //Sends user back to feed if its not the poster
-   if ((int)$post['user_id'] !== $user_id){
-     redirect('/feed.php');
-   }
-
+         if ((int)$post['user_id'] !== $user_id) {
+             redirect('/feed.php');
+         }
+     }
  }
 ?>
 

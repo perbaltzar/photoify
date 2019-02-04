@@ -3,17 +3,16 @@
 declare(strict_types=1);
 require __DIR__.'/views/header.php';
 
-if (is_logged_in()){
-  if (isset($_GET['profile_id'])){
-    // Collecting userdata from database
-    $profile_id = (int)filter_var($_GET['profile_id'], FILTER_SANITIZE_NUMBER_INT);
-    $profile = get_user_by_id($profile_id, $pdo);
-    $user_id = (int)$_SESSION['user']['id'];
-  }
-  $posts = get_posts_by_userid($profile_id, $pdo);
-  $followers = count_followers($profile_id, $pdo);
-  $following = count_following($profile_id, $pdo);
- 
+if (is_logged_in()) {
+    if (isset($_GET['profile_id'])) {
+        // Collecting userdata from database
+        $profile_id = (int)filter_var($_GET['profile_id'], FILTER_SANITIZE_NUMBER_INT);
+        $profile = get_user_by_id($profile_id, $pdo);
+        $user_id = (int)$_SESSION['user']['id'];
+    }
+    $posts = get_posts_by_userid($profile_id, $pdo);
+    $followers = count_followers($profile_id, $pdo);
+    $following = count_following($profile_id, $pdo);
 }
 
 ?>

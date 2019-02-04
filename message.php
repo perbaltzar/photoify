@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/views/header.php';
 
-if (isset($_GET['profile_id']) && is_logged_in()){
+if (isset($_GET['profile_id']) && is_logged_in()) {
     $conversation_exist = false;
     $user_id = (int)$_SESSION['user']['id'];
     $profile_id = (int) filter_var($_GET['profile_id'], FILTER_SANITIZE_NUMBER_INT);
@@ -18,8 +18,7 @@ if (isset($_GET['profile_id']) && is_logged_in()){
     $statement->execute();
     $conversation_ids = $statement->fetchAll(PDO::FETCH_ASSOC);
     
-    foreach ($conversation_ids as $conversation_id) 
-    {
+    foreach ($conversation_ids as $conversation_id) {
         $statement = $pdo->prepare('SELECT user_id FROM conversation_members 
                                     WHERE conversation_id = :conversation_id AND user_id != :user_id');
         $statement->bindParam(':conversation_id', $conversation_id['conversation_id'], PDO::PARAM_INT);
@@ -30,8 +29,7 @@ if (isset($_GET['profile_id']) && is_logged_in()){
         // print_r($profile_id_check);
         
         // print_r($profile_id);
-        if ((int) $profile_id_check['user_id'] === $profile_id)
-        {
+        if ((int) $profile_id_check['user_id'] === $profile_id) {
             $conversation_id = $conversation_id['conversation_id'];
             $conversation_exist = true;
             break;
@@ -40,8 +38,7 @@ if (isset($_GET['profile_id']) && is_logged_in()){
     
 
     // die(var_dump($conversation_exist, $profile_id_check));
-    if (!$conversation_exist)
-    {
+    if (!$conversation_exist) {
         // CREATING A CONVERSTION IF NOT EXISTS
         $statement = $pdo->prepare('INSERT INTO conversations(created_at) VALUES (:created_at)');
         $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
@@ -93,7 +90,7 @@ if (isset($_GET['profile_id']) && is_logged_in()){
     
     <div class="all-messages-container">
         <?php
-        foreach ($messages as $message) : 
+        foreach ($messages as $message) :
             //  die(var_dump($message));
             if ((int) $message['sender_id'] === $user_id):?>
                 <div class="own-message-container">
